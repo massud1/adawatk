@@ -183,40 +183,63 @@ function showTab(i){
 
 // ===== 1. KEYWORD FINDER =====
 function findKeywords(){
-  const input = document.getElementById('kwInput').value.trim().toLowerCase();
+  const input = document.getElementById('kwInput').value.trim();
   const el = document.getElementById('kwResults');
-  if(!input){el.innerHTML='<p style="color:var(--text-muted);margin-top:12px;">أدخل كلمة للبحث</p>';return;}
+  if(!input){el.innerHTML='<p style="color:var(--text-muted);margin-top:12px;">ادخل كلمة للبحث</p>';return;}
 
   let found = [];
   for(const [topic, kws] of Object.entries(kwDB)){
-    if(input.includes(topic) || topic.includes(input)){
+    if(input.indexOf(topic) !== -1 || topic.indexOf(input) !== -1){
       const v = getVol(topic);
-      kws.forEach(k => found.push({kw:k, topic, vol:v}));
+      kws.forEach(function(k){ found.push({kw:k, topic:topic, vol:v}); });
     }
   }
 
-  // Fuzzy: check each kw
+  // Fuzzy: check each keyword text
   if(found.length === 0){
     for(const [topic, kws] of Object.entries(kwDB)){
-      kws.forEach(k => {
-        if(k.includes(input)) found.push({kw:k, topic, vol:getVol(topic)});
+      kws.forEach(function(k){
+        if(k.indexOf(input) !== -1 || input.indexOf(k) !== -1){
+          found.push({kw:k, topic:topic, vol:getVol(topic)});
+        }
       });
     }
   }
 
+  // Also match partial words
   if(found.length === 0){
-    el.innerHTML = '<p style="color:var(--text-muted);margin-top:16px;">لم يتم العثور على نتائج. جرّب كلمة أخرى مثل: قرض، سيارة، راتب، بنزين</p>';
+    var words = input.split(' ');
+    for(var w = 0; w < words.length; w++){
+      var word = words[w];
+      if(word.length < 2) continue;
+      for(const [topic, kws] of Object.entries(kwDB)){
+        if(topic.indexOf(word) !== -1 || word.indexOf(topic) !== -1){
+          var v = getVol(topic);
+          kws.forEach(function(k){ found.push({kw:k, topic:topic, vol:v}); });
+        }
+      }
+    }
+  }
+
+  if(found.length === 0){
+    el.innerHTML = '<p style="color:var(--text-muted);margin-top:16px;">لم يتم العثور على نتائج. جرب كلمة اخرى مثل: قرض، سيارة، راتب، بنزين</p>';
     return;
   }
 
   // Deduplicate
-  found = [...new Map(found.map(f=>[f.kw,f])).values()];
+  var seen = {};
+  var unique = [];
+  for(var i = 0; i < found.length; i++){
+    if(!seen[found[i].kw]){ seen[found[i].kw] = true; unique.push(found[i]); }
+  }
+  found = unique;
 
-  let html = '<h4 style="margin-top:16px;margin-bottom:8px;">🎯 '+found.length+' كلمة مقترحة</h4><div class="kw-grid">';
-  found.forEach(f => {
-    html += `<div class="kw-chip" onclick="usekw('${f.kw}')"><span>${f.kw}</span><span class="vol" style="color:${f.vol.c}">${f.vol.t}</span></div>`;
-  });
-  html += '</div><p style="font-size:12px;color:var(--text-muted);margin-top:8px;">💡 اضغط على أي كلمة لاستخدامها في Tweet Optimizer</p>';
+  var html = '<h4 style="margin-top:16px;margin-bottom:8px;">' + found.length + ' كلمة مقترحة</h4><div class="kw-grid">';
+  for(var j = 0; j < found.length; j++){
+    var f = found[j];
+    html += '<div class="kw-chip" data-kw="' + f.kw + '" onclick="usekw(this.getAttribute(\'data-kw\'))"><span>' + f.kw + '</span><span class="vol" style="color:' + f.vol.c + '">' + f.vol.t + '</span></div>';
+  }
+  html += '</div><p style="font-size:12px;color:var(--text-muted);margin-top:8px;">اضغط على اي كلمة لاستخدامها في Tweet Optimizer</p>';
   el.innerHTML = html;
 }
 
