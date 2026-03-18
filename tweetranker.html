@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TweetRanker - حسّن تغريدتك قبل النشر. تحليل الكلمات المفتاحية، تقييم التغريدة، وفحص صفحة الهبوط." />
+  <meta name="keywords" content="تحسين تغريدة, tweet optimizer, كلمات مفتاحية تويتر, تحليل تغريدة, viral tweet" />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>TweetRanker - حسّن تغريدتك قبل النشر | أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/tweetranker.html" />
+  <meta property="og:title" content="TweetRanker - Tweet Optimizer" />
+  <meta property="og:description" content="Optimize your tweets before posting. Keyword analysis, tweet scoring, and landing page checker." />
+  <meta property="og:locale" content="ar_SA" />
+  <link rel="canonical" href="https://adawatk.pages.dev/tweetranker.html" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"TweetRanker","description":"Tweet optimization tool","url":"https://adawatk.pages.dev/tweetranker.html","applicationCategory":"UtilityApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"SAR"},"inLanguage":"ar"}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277" crossorigin="anonymous"></script>
+  <style>
+    .tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+    .tab{padding:10px 20px;border-radius:12px;border:1px solid var(--border-card);background:var(--bg-card);color:var(--text-muted);cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;transition:all .3s}
+    .tab.active{background:linear-gradient(135deg,var(--accent-start),var(--accent-end));color:#fff;border-color:transparent}
+    .tab:hover:not(.active){border-color:var(--accent-start);color:var(--text-primary)}
+    .panel{display:none}.panel.active{display:block}
+    textarea{width:100%;min-height:100px;padding:14px;border-radius:12px;border:1px solid var(--border-card);background:var(--bg-secondary);color:var(--text-primary);font-family:inherit;font-size:15px;resize:vertical;line-height:1.8}
+    textarea:focus{border-color:var(--accent-start);outline:none}
+    .score-ring{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;margin:0 auto 16px;position:relative}
+    .score-ring .num{font-size:36px;font-weight:900;line-height:1}
+    .score-ring .lbl{font-size:11px;color:var(--text-muted);margin-top:4px}
+    .score-bad{background:conic-gradient(#ef4444 var(--pct),var(--bg-secondary) var(--pct));color:#ef4444}
+    .score-mid{background:conic-gradient(#f59e0b var(--pct),var(--bg-secondary) var(--pct));color:#f59e0b}
+    .score-good{background:conic-gradient(#10b981 var(--pct),var(--bg-secondary) var(--pct));color:#10b981}
+    .score-inner{width:100px;height:100px;border-radius:50%;background:var(--bg-card);display:flex;align-items:center;justify-content:center;flex-direction:column}
+    .check-list{list-style:none;padding:0;margin:16px 0}
+    .check-list li{padding:8px 12px;border-radius:8px;margin-bottom:6px;font-size:14px;display:flex;align-items:center;gap:8px;background:var(--bg-secondary)}
+    .check-list .pass{color:#10b981}.check-list .fail{color:#ef4444}
+    .kw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:12px}
+    .kw-chip{background:var(--bg-secondary);border:1px solid var(--border-card);padding:10px 14px;border-radius:10px;font-size:13px;cursor:pointer;transition:all .3s;display:flex;justify-content:space-between;align-items:center}
+    .kw-chip:hover{border-color:var(--accent-start);transform:translateY(-1px)}
+    .kw-chip .vol{font-size:11px;color:var(--text-muted);background:var(--bg-card);padding:2px 8px;border-radius:6px}
+    .improved-tweet{background:var(--bg-secondary);border:1px solid rgba(16,185,129,0.3);border-radius:12px;padding:16px;margin-top:12px;font-size:15px;line-height:1.8;position:relative}
+    .improved-tweet .badge{position:absolute;top:-10px;right:12px;background:linear-gradient(135deg,#10b981,#34d399);color:#fff;font-size:11px;padding:2px 10px;border-radius:6px;font-weight:700}
+    .lp-result{margin-top:12px}.lp-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--bg-secondary);border-radius:10px;margin-bottom:6px;font-size:13px}
+    .lp-row .status{font-weight:700;font-size:12px;padding:3px 10px;border-radius:6px}
+    .lp-row .status.ok{background:rgba(16,185,129,0.15);color:#10b981}
+    .lp-row .status.warn{background:rgba(245,158,11,0.15);color:#f59e0b}
+    .lp-row .status.bad{background:rgba(239,68,68,0.15);color:#ef4444}
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar"><div class="container"><a href="index.html" class="nav-brand"><div class="nav-logo">أ</div><span class="nav-title">أدواتك اليومية</span></a><ul class="nav-links"><li><a href="index.html">الرئيسية</a></li><li><a href="tweetranker.html" class="active">TweetRanker</a></li><li><a href="loan.html">القرض</a></li></ul></div></nav>
+
+    <section class="tool-page container">
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background:rgba(29,161,242,0.15);color:#1DA1F2;">🐦</div>
+        <h1>TweetRanker</h1>
+        <p>حسّن تغريدتك قبل النشر — Keyword → Score → تحسين → نشر</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs fade-up">
+        <button class="tab active" onclick="showTab(0)">🔍 Keyword Finder</button>
+        <button class="tab" onclick="showTab(1)">🧠 Tweet Optimizer</button>
+        <button class="tab" onclick="showTab(2)">🔗 Landing Page Checker</button>
+      </div>
+
+      <!-- ==================== TAB 1: KEYWORD FINDER ==================== -->
+      <div class="panel active" id="panel0">
+        <div class="glass-card fade-up">
+          <h3 style="margin-bottom:12px;">🔍 اكتشف الكلمات اللي يبحث عنها الناس</h3>
+          <div class="form-group">
+            <label for="kwInput">أدخل كلمة أو موضوع</label>
+            <input type="text" id="kwInput" placeholder="مثال: قرض سيارة، تمويل عقاري، راتب..." />
+          </div>
+          <button class="btn btn-primary" onclick="findKeywords()">ابحث عن الكلمات 🔍</button>
+          <div id="kwResults"></div>
+        </div>
+      </div>
+
+      <!-- ==================== TAB 2: TWEET OPTIMIZER ==================== -->
+      <div class="panel" id="panel1">
+        <div class="glass-card fade-up">
+          <h3 style="margin-bottom:12px;">🧠 حلل تغريدتك واحصل على تقييم</h3>
+          <div class="form-group">
+            <label for="tweetInput">اكتب تغريدتك هنا</label>
+            <textarea id="tweetInput" placeholder="مثال: عندي حاسبة قروض رهيبة جربوها..."></textarea>
+            <div style="text-align:left;font-size:12px;color:var(--text-muted);margin-top:4px;"><span id="charCount">0</span>/280</div>
+          </div>
+          <div class="form-group">
+            <label for="kwTarget">الكلمة المفتاحية المستهدفة (اختياري)</label>
+            <input type="text" id="kwTarget" placeholder="مثال: حاسبة قرض" />
+          </div>
+          <button class="btn btn-primary" style="background:linear-gradient(135deg,#1DA1F2,#0d8ecf);" onclick="analyzeTweet()">حلل التغريدة 🧠</button>
+          <div id="tweetResults"></div>
+        </div>
+      </div>
+
+      <!-- ==================== TAB 3: LANDING PAGE CHECKER ==================== -->
+      <div class="panel" id="panel2">
+        <div class="glass-card fade-up">
+          <h3 style="margin-bottom:12px;">🔗 افحص صفحة الهبوط</h3>
+          <div class="form-grid">
+            <div class="form-group"><label for="lpUrl">رابط الصفحة</label><input type="text" id="lpUrl" placeholder="https://adawatk.pages.dev/loan.html" /></div>
+            <div class="form-group"><label for="lpKw">الكلمة المفتاحية</label><input type="text" id="lpKw" placeholder="حاسبة قرض" /></div>
+          </div>
+          <button class="btn btn-primary" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa);" onclick="checkLP()">افحص الصفحة 🔗</button>
+          <div id="lpResults"></div>
+        </div>
+      </div>
+
+      <!-- Ad -->
+      <div class="ad-slot fade-up">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8447712286531277" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+
+      <!-- SEO Content -->
+      <div class="seo-content fade-up">
+        <h2>ما هو TweetRanker؟</h2>
+        <p>TweetRanker أداة مجانية تساعدك تحسّن تغريداتك قبل النشر. تحلل الكلمات المفتاحية، تقيّم قوة التغريدة، وتعطيك نسخة محسنة جاهزة للنشر. الهدف: تغريدات تظهر بالبحث وتجيب تفاعل حقيقي.</p>
+        <h3>كيف يعمل؟</h3>
+        <ul>
+          <li><strong>Keyword Finder:</strong> يكتشف الكلمات اللي يبحث عنها الناس</li>
+          <li><strong>Tweet Optimizer:</strong> يحلل تغريدتك ويعطيك تقييم من 100</li>
+          <li><strong>Landing Page Checker:</strong> يفحص صفحة الهبوط ويتأكد إنها قوية</li>
+        </ul>
+      </div>
+
+      <div class="share-bar fade-up">
+        <a class="share-btn twitter" href="https://twitter.com/intent/tweet?url=https://adawatk.pages.dev/tweetranker.html&text=TweetRanker%20-%20%D8%AD%D8%B3%D9%91%D9%86%20%D8%AA%D8%BA%D8%B1%D9%8A%D8%AF%D8%AA%D9%83%20%D9%82%D8%A8%D9%84%20%D8%A7%D9%84%D9%86%D8%B4%D8%B1" target="_blank">X Share</a>
+        <a class="share-btn whatsapp" href="https://wa.me/?text=TweetRanker%20-%20%D8%AD%D8%B3%D9%91%D9%86%20%D8%AA%D8%BA%D8%B1%D9%8A%D8%AF%D8%AA%D9%83%0Ahttps://adawatk.pages.dev/tweetranker.html" target="_blank">WhatsApp</a>
+        <button class="share-btn copy" onclick="navigator.clipboard.writeText('https://adawatk.pages.dev/tweetranker.html');this.textContent='Copied!'">Copy Link</button>
+      </div>
+
+      <div class="related-tools fade-up"><h3>أدوات ذات صلة</h3><div class="related-grid">
+        <a href="index.html" class="related-card"><div class="r-icon" style="background:rgba(99,102,241,0.15);color:#818cf8;">🏠</div>كل الأدوات</a>
+        <a href="percentage.html" class="related-card"><div class="r-icon" style="background:rgba(16,185,129,0.15);color:#10b981;">📊</div>حاسبة النسبة</a>
+      </div></div>
+    </section>
+
+    <footer class="footer container"><p>© 2026 أدواتك اليومية - TweetRanker</p></footer>
+  </div>
+
+<script>
+// ===== KEYWORD DATABASE =====
+const kwDB = {
+  'قرض': ['كم قسط قرض 200 الف','قرض شخصي بدون كفيل','حاسبة قرض البنك الاهلي','قرض سيارة بدون دفعة','افضل بنك للقروض الشخصية','شروط القرض الشخصي','حاسبة القرض العقاري','قرض بنك الراجحي'],
+  'سيارة': ['كم تحتاج راتب لشراء سيارة','تمويل سيارة بدون دفعة','اقساط سيارة 200 الف','افضل سيارة عائلية','سيارة اقتصادية 2024','تأمين سيارة رخيص','حاسبة تمويل السيارة'],
+  'راتب': ['حاسبة الراتب الصافي','كم راتب تحتاج','الراتب بعد التأمينات','سلم رواتب الموظفين','حساب نهاية الخدمة','راتب التقاعد','حاسبة مكافأة نهاية الخدمة'],
+  'تمويل': ['تمويل عقاري بدون دفعة','تمويل شخصي سريع','حاسبة التمويل العقاري','شروط التمويل العقاري','افضل بنك تمويل عقاري','تمويل بدون تحويل راتب'],
+  'عقار': ['اسعار العقارات','شراء بيت بالتقسيط','حاسبة التمويل العقاري','سكني','الصندوق العقاري','شقق تمليك','فلل للبيع'],
+  'بنزين': ['سعر البنزين اليوم','حاسبة البنزين','استهلاك البنزين','ارامكو بنزين','سعر لتر البنزين','توفير البنزين'],
+  'كهرباء': ['حاسبة الكهرباء','فاتورة الكهرباء','تعرفة الكهرباء','توفير الكهرباء','شركة الكهرباء','اسعار الكهرباء الجديدة'],
+  'ضريبة': ['حاسبة الضريبة','ضريبة القيمة المضافة','حساب الضريبة 15','ضريبة التصرفات العقارية','الزكاة والدخل'],
+  'ادخار': ['كيف ادخر فلوس','حاسبة الادخار','طريقة الادخار','توفير المال','ادخار الراتب','خطة ادخار'],
+  'مصاريف': ['تحليل المصاريف','ادارة المصاريف','تقليل المصاريف','ميزانية شهرية','مصاريف البيت','كيف اوفر من راتبي'],
+  'زكاة': ['حاسبة الزكاة','نصاب الزكاة','زكاة المال','زكاة الذهب','كيف احسب الزكاة','موعد الزكاة'],
+  'عمر': ['حاسبة العمر','كم عمري','حساب العمر بالهجري','حاسبة العمر بالميلادي'],
+  'تاريخ': ['تحويل التاريخ','تاريخ اليوم هجري','الفرق بين تاريخين','تقويم هجري','كم باقي على الراتب'],
+  'عملة': ['سعر الدولار اليوم','تحويل العملات','سعر صرف الريال','الدولار مقابل الريال','يورو مقابل ريال'],
+  'وزن': ['حاسبة BMI','مؤشر كتلة الجسم','الوزن المثالي','حساب السعرات','رجيم','نظام غذائي'],
+  'tweet': ['how to go viral on twitter','best tweet format','twitter engagement tips','tweet optimizer','viral tweet formula'],
+  'twitter': ['twitter marketing','grow twitter followers','twitter seo','tweet reach','twitter algorithm'],
+};
+
+// Volume estimates
+const volumes = {'عالي':['قرض','سيارة','راتب','تمويل','بنزين'],'متوسط':['عقار','كهرباء','ضريبة','عملة'],'منخفض':['ادخار','مصاريف','زكاة','عمر','تاريخ','وزن']};
+
+function getVol(topic) {
+  if(volumes['عالي'].includes(topic)) return {t:'عالي',c:'#10b981'};
+  if(volumes['متوسط'].includes(topic)) return {t:'متوسط',c:'#f59e0b'};
+  return {t:'منخفض',c:'#94a3b8'};
+}
+
+// ===== TAB SWITCHING =====
+function showTab(i){
+  document.querySelectorAll('.tab').forEach((t,idx)=>t.classList.toggle('active',idx===i));
+  document.querySelectorAll('.panel').forEach((p,idx)=>p.classList.toggle('active',idx===i));
+}
+
+// ===== 1. KEYWORD FINDER =====
+function findKeywords(){
+  const input = document.getElementById('kwInput').value.trim().toLowerCase();
+  const el = document.getElementById('kwResults');
+  if(!input){el.innerHTML='<p style="color:var(--text-muted);margin-top:12px;">أدخل كلمة للبحث</p>';return;}
+
+  let found = [];
+  for(const [topic, kws] of Object.entries(kwDB)){
+    if(input.includes(topic) || topic.includes(input)){
+      const v = getVol(topic);
+      kws.forEach(k => found.push({kw:k, topic, vol:v}));
+    }
+  }
+
+  // Fuzzy: check each kw
+  if(found.length === 0){
+    for(const [topic, kws] of Object.entries(kwDB)){
+      kws.forEach(k => {
+        if(k.includes(input)) found.push({kw:k, topic, vol:getVol(topic)});
+      });
+    }
+  }
+
+  if(found.length === 0){
+    el.innerHTML = '<p style="color:var(--text-muted);margin-top:16px;">لم يتم العثور على نتائج. جرّب كلمة أخرى مثل: قرض، سيارة، راتب، بنزين</p>';
+    return;
+  }
+
+  // Deduplicate
+  found = [...new Map(found.map(f=>[f.kw,f])).values()];
+
+  let html = '<h4 style="margin-top:16px;margin-bottom:8px;">🎯 '+found.length+' كلمة مقترحة</h4><div class="kw-grid">';
+  found.forEach(f => {
+    html += `<div class="kw-chip" onclick="usekw('${f.kw}')"><span>${f.kw}</span><span class="vol" style="color:${f.vol.c}">${f.vol.t}</span></div>`;
+  });
+  html += '</div><p style="font-size:12px;color:var(--text-muted);margin-top:8px;">💡 اضغط على أي كلمة لاستخدامها في Tweet Optimizer</p>';
+  el.innerHTML = html;
+}
+
+function usekw(kw){
+  document.getElementById('kwTarget').value = kw;
+  document.getElementById('tweetInput').value = kw + ' ';
+  showTab(1);
+  document.getElementById('tweetInput').focus();
+}
+
+// ===== 2. TWEET OPTIMIZER =====
+document.addEventListener('DOMContentLoaded', () => {
+  const ta = document.getElementById('tweetInput');
+  if(ta) ta.addEventListener('input', () => {
+    document.getElementById('charCount').textContent = ta.value.length;
+  });
+});
+
+function analyzeTweet(){
+  const tweet = document.getElementById('tweetInput').value.trim();
+  const keyword = document.getElementById('kwTarget').value.trim();
+  const el = document.getElementById('tweetResults');
+  if(!tweet){el.innerHTML='<p style="color:var(--text-muted);margin-top:12px;">اكتب تغريدتك أولاً</p>';return;}
+
+  let score = 0;
+  const checks = [];
+
+  // 1. Has keyword (30 pts)
+  if(keyword && tweet.includes(keyword)){
+    score += 30;
+    checks.push({pass:true, text:'تحتوي على الكلمة المفتاحية (+30)', tip:''});
+  } else if(keyword){
+    checks.push({pass:false, text:'لا تحتوي على الكلمة المفتاحية', tip:'أضف "'+keyword+'" في التغريدة'});
+  } else {
+    score += 10;
+    checks.push({pass:true, text:'لم يتم تحديد كلمة مفتاحية (+10 افتراضي)', tip:''});
+  }
+
+  // 2. Is question (20 pts)
+  const qWords = ['كم','كيف','ليش','هل','وش','متى','وين','ايش','ما هو','ما هي','?','؟'];
+  const isQ = qWords.some(q => tweet.includes(q));
+  if(isQ){ score += 20; checks.push({pass:true, text:'تحتوي على سؤال - يزيد التفاعل (+20)', tip:''}); }
+  else { checks.push({pass:false, text:'لا تحتوي على سؤال', tip:'ابدأ بـ "كم" أو "كيف" أو "هل"'}); }
+
+  // 3. Has number (15 pts)
+  const hasNum = /\d/.test(tweet);
+  if(hasNum){ score += 15; checks.push({pass:true, text:'تحتوي على أرقام - تجذب الانتباه (+15)', tip:''}); }
+  else { checks.push({pass:false, text:'لا تحتوي على أرقام', tip:'أضف رقم مثل: "200 ألف" أو "15%" أو "5 خطوات"'}); }
+
+  // 4. Length check (10 pts)
+  if(tweet.length <= 180 && tweet.length >= 40){
+    score += 10;
+    checks.push({pass:true, text:'الطول مناسب ('+tweet.length+'/280) (+10)', tip:''});
+  } else if(tweet.length < 40){
+    checks.push({pass:false, text:'التغريدة قصيرة جداً ('+tweet.length+' حرف)', tip:'أضف تفاصيل أكثر - الأفضل 40-180 حرف'});
+  } else {
+    score += 5;
+    checks.push({pass:true, text:'التغريدة طويلة نسبياً ('+tweet.length+'/280) (+5)', tip:''});
+  }
+
+  // 5. Has emoji (5 pts)
+  const emojiRg = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F900}-\u{1F9FF}]/u;
+  if(emojiRg.test(tweet)){ score += 5; checks.push({pass:true, text:'تحتوي على إيموجي (+5)', tip:''}); }
+  else { checks.push({pass:false, text:'لا تحتوي على إيموجي', tip:'أضف 1-2 إيموجي مناسب'}); }
+
+  // 6. Has CTA (10 pts)
+  const ctaWords = ['جرب','اضغط','شارك','رابط','هنا','link','check','try','👇','👆','🔗','جربها','ادخل'];
+  const hasCTA = ctaWords.some(c => tweet.toLowerCase().includes(c));
+  if(hasCTA){ score += 10; checks.push({pass:true, text:'تحتوي على دعوة للتفاعل CTA (+10)', tip:''}); }
+  else { checks.push({pass:false, text:'لا تحتوي على CTA', tip:'أضف "جربها 👇" أو "الرابط بالرد"'}); }
+
+  // 7. Has URL (5 pts)
+  const hasURL = /https?:\/\//.test(tweet);
+  if(hasURL){ score += 5; checks.push({pass:true, text:'تحتوي على رابط (+5)', tip:''}); }
+
+  // 8. Line breaks (5 pts)
+  if(tweet.includes('\n')){ score += 5; checks.push({pass:true, text:'تستخدم فواصل أسطر - أسهل للقراءة (+5)', tip:''}); }
+  else if(tweet.length > 80){ checks.push({pass:false, text:'لا تستخدم فواصل أسطر', tip:'قسّم التغريدة لأسطر قصيرة'}); }
+
+  score = Math.min(score, 100);
+
+  // Score color
+  let cls = 'score-bad', lbl = 'ضعيف ❌';
+  if(score >= 70){ cls = 'score-good'; lbl = 'ممتاز 🔥'; }
+  else if(score >= 45){ cls = 'score-mid'; lbl = 'متوسط ⚠️'; }
+
+  // Generate improved tweet
+  let improved = generateImproved(tweet, keyword, checks);
+
+  let html = `
+    <div style="margin-top:20px;">
+      <div class="score-ring ${cls}" style="--pct:${score}%">
+        <div class="score-inner">
+          <span class="num">${score}</span>
+          <span class="lbl">${lbl}</span>
+        </div>
+      </div>
+      <ul class="check-list">`;
+  checks.forEach(c => {
+    html += `<li><span class="${c.pass?'pass':'fail'}">${c.pass?'✅':'❌'}</span> ${c.text} ${c.tip?'<br><small style="color:var(--text-muted)">💡 '+c.tip+'</small>':''}</li>`;
+  });
+  html += '</ul>';
+
+  if(score < 80 && improved){
+    html += `
+      <div class="improved-tweet">
+        <span class="badge">✨ النسخة المحسنة</span>
+        <p style="margin:8px 0 12px;">${improved}</p>
+        <button class="share-btn twitter" onclick="window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(document.querySelector('.improved-tweet p').textContent),'_blank')" style="font-size:12px;padding:6px 14px;">انشرها على X 🐦</button>
+        <button class="share-btn copy" onclick="navigator.clipboard.writeText(document.querySelector('.improved-tweet p').textContent);this.textContent='Copied!'" style="font-size:12px;padding:6px 14px;">نسخ ✂️</button>
+      </div>`;
+  }
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function generateImproved(tweet, keyword, checks){
+  const fails = checks.filter(c => !c.pass);
+  if(fails.length === 0) return '';
+
+  let imp = tweet;
+
+  // Add question if missing
+  if(!checks.find(c=>c.text.includes('سؤال'))?.pass){
+    if(keyword) imp = 'كم ' + keyword + '؟\n\n' + imp;
+    else imp = 'هل تعرف؟\n\n' + imp;
+  }
+
+  // Add emoji if missing
+  if(!checks.find(c=>c.text.includes('إيموجي'))?.pass) imp += ' 🔥';
+
+  // Add CTA if missing
+  if(!checks.find(c=>c.text.includes('CTA'))?.pass) imp += '\n\nجربها الحين 👇';
+
+  // Add number if missing
+  if(!checks.find(c=>c.text.includes('أرقام'))?.pass && keyword){
+    imp = imp.replace(keyword, keyword + ' (مجاني 100%)');
+  }
+
+  return imp;
+}
+
+// ===== 3. LANDING PAGE CHECKER =====
+function checkLP(){
+  const url = document.getElementById('lpUrl').value.trim();
+  const kw = document.getElementById('lpKw').value.trim();
+  const el = document.getElementById('lpResults');
+  if(!url){el.innerHTML='<p style="color:var(--text-muted);margin-top:12px;">أدخل رابط الصفحة</p>';return;}
+
+  el.innerHTML = '<p style="color:var(--accent-start);margin-top:12px;">جاري الفحص... ⏳</p>';
+
+  // For local pages, we can do a real check
+  if(url.includes('adawatk.pages.dev') || url.startsWith('http')){
+    fetch(url).then(r => r.text()).then(html => {
+      renderLPResults(html, url, kw, el);
+    }).catch(e => {
+      // CORS - do basic check
+      renderLPBasic(url, kw, el);
+    });
+  } else {
+    renderLPBasic(url, kw, el);
+  }
+}
+
+function renderLPResults(html, url, kw, el){
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+  const checks = [];
+  let score = 0;
+
+  // 1. Title
+  const title = doc.querySelector('title')?.textContent || '';
+  if(title && (!kw || title.includes(kw))){
+    score += 20; checks.push({name:'عنوان الصفحة (Title)',status:'ok',detail:title.substring(0,60)});
+  } else if(title){
+    score += 10; checks.push({name:'عنوان الصفحة',status:'warn',detail:'موجود لكن لا يحتوي الكلمة المفتاحية'});
+  } else {
+    checks.push({name:'عنوان الصفحة',status:'bad',detail:'غير موجود!'});
+  }
+
+  // 2. Meta description
+  const meta = doc.querySelector('meta[name="description"]')?.content || '';
+  if(meta && meta.length > 50){
+    score += 15; checks.push({name:'وصف Meta',status:'ok',detail:meta.substring(0,80)+'...'});
+  } else if(meta){
+    score += 5; checks.push({name:'وصف Meta',status:'warn',detail:'قصير جداً ('+meta.length+' حرف)'});
+  } else {
+    checks.push({name:'وصف Meta',status:'bad',detail:'غير موجود!'});
+  }
+
+  // 3. H1
+  const h1 = doc.querySelector('h1')?.textContent || '';
+  if(h1){ score += 15; checks.push({name:'عنوان H1',status:'ok',detail:h1}); }
+  else { checks.push({name:'عنوان H1',status:'bad',detail:'غير موجود!'}); }
+
+  // 4. Has content
+  const text = doc.body?.textContent || '';
+  if(text.length > 500){ score += 10; checks.push({name:'محتوى الصفحة',status:'ok',detail:text.length+' حرف'}); }
+  else { score += 5; checks.push({name:'محتوى الصفحة',status:'warn',detail:'محتوى قليل ('+text.length+' حرف)'}); }
+
+  // 5. Schema.org
+  const schema = doc.querySelector('script[type="application/ld+json"]');
+  if(schema){ score += 10; checks.push({name:'Schema.org',status:'ok',detail:'بيانات منظمة موجودة'}); }
+  else { checks.push({name:'Schema.org',status:'warn',detail:'غير موجود - يحسن الظهور بالبحث'}); }
+
+  // 6. Open Graph
+  const og = doc.querySelector('meta[property="og:title"]');
+  if(og){ score += 10; checks.push({name:'Open Graph',status:'ok',detail:'جاهز للمشاركة بالسوشيال'}); }
+  else { checks.push({name:'Open Graph',status:'warn',detail:'غير موجود'}); }
+
+  // 7. Canonical
+  const canon = doc.querySelector('link[rel="canonical"]');
+  if(canon){ score += 10; checks.push({name:'Canonical URL',status:'ok',detail:canon.href}); }
+  else { checks.push({name:'Canonical URL',status:'warn',detail:'غير موجود'}); }
+
+  // 8. AdSense
+  const ads = doc.querySelector('script[src*="adsbygoogle"]');
+  if(ads){ score += 5; checks.push({name:'Google AdSense',status:'ok',detail:'كود الإعلانات موجود'}); }
+
+  // 9. Keyword in content
+  if(kw && text.toLowerCase().includes(kw.toLowerCase())){
+    score += 5; checks.push({name:'الكلمة المفتاحية بالمحتوى',status:'ok',detail:'موجودة ✅'});
+  } else if(kw){
+    checks.push({name:'الكلمة المفتاحية بالمحتوى',status:'bad',detail:'غير موجودة!'});
+  }
+
+  score = Math.min(score, 100);
+
+  let cls='bad',lbl='ضعيف';
+  if(score>=70){cls='ok';lbl='ممتاز 🔥';}
+  else if(score>=45){cls='warn';lbl='متوسط ⚠️';}
+
+  let html = `<div class="lp-result"><div style="text-align:center;margin:16px 0;"><span style="font-size:32px;font-weight:900;color:${cls==='ok'?'#10b981':cls==='warn'?'#f59e0b':'#ef4444'}">${score}/100</span><br><span style="font-size:14px;color:var(--text-muted)">${lbl}</span></div>`;
+  checks.forEach(c => {
+    html += `<div class="lp-row"><div><strong>${c.name}</strong><br><small style="color:var(--text-muted)">${c.detail}</small></div><span class="status ${c.status}">${c.status==='ok'?'✅ ممتاز':c.status==='warn'?'⚠️ تحسين':'❌ مطلوب'}</span></div>`;
+  });
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function renderLPBasic(url, kw, el){
+  let html = '<div class="lp-result" style="margin-top:16px;">';
+  html += '<p style="color:var(--text-muted);margin-bottom:12px;">⚠️ لا يمكن فحص الصفحة مباشرة (CORS). إليك قائمة فحص يدوي:</p>';
+  const items = [
+    'هل عنوان الصفحة يحتوي الكلمة المفتاحية؟',
+    'هل يوجد وصف Meta مناسب (100-160 حرف)؟',
+    'هل يوجد عنوان H1 واضح؟',
+    'هل الصفحة سريعة التحميل؟',
+    'هل يوجد محتوى كافي (500+ كلمة)؟',
+    'هل يوجد Schema.org structured data؟',
+    'هل يوجد Open Graph للمشاركة؟',
+  ];
+  items.forEach(i => { html += `<div class="lp-row"><span>${i}</span><span class="status warn">تحقق</span></div>`; });
+  html += `<p style="margin-top:12px;font-size:12px;color:var(--text-muted);">💡 جرب فحص صفحات موقعك: <a href="#" onclick="document.getElementById('lpUrl').value='https://adawatk.pages.dev/loan.html';return false;" style="color:var(--accent-start)">adawatk.pages.dev/loan.html</a></p>`;
+  html += '</div>';
+  el.innerHTML = html;
+}
+</script>
+</body>
+</html>
