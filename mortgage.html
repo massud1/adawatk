@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="حاسبة التمويل العقاري - احسب القسط الشهري لتمويل شراء منزل أو شقة مع الدفعة الأولى ومدة التمويل." />
+  <meta name="keywords" content="حاسبة تمويل عقاري, قسط شقة, تمويل منزل, حاسبة عقار, تمويل عقاري السعودية" />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>حاسبة التمويل العقاري - احسب قسط المنزل | أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/mortgage.html" />
+  <meta property="og:title" content="Mortgage Calculator - Home Financing" />
+  <meta property="og:description" content="Calculate monthly mortgage payment with down payment and financing duration." />
+  <meta property="og:site_name" content="adawatk" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Mortgage Calculator - Home Financing" />
+  <meta name="twitter:description" content="Calculate monthly mortgage payment with down payment and financing duration." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adawatk.pages.dev/mortgage.html" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mortgage Calculator",
+    "description": "Real estate mortgage calculator for Saudi Arabia",
+    "url": "https://adawatk.pages.dev/mortgage.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar"><div class="container"><a href="index.html" class="nav-brand"><div class="nav-logo">أ</div><span class="nav-title">أدواتك اليومية</span></a><ul class="nav-links"><li><a href="index.html">الرئيسية</a></li><li><a href="mortgage.html" class="active">العقاري</a></li><li><a href="loan.html">القرض</a></li><li><a href="salary.html">الراتب</a></li></ul></div></nav>
+
+    <section class="tool-page container">
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background:rgba(99,102,241,0.15);color:#818cf8;">🏠</div>
+        <h1>حاسبة التمويل العقاري</h1>
+        <p>احسب القسط الشهري وإجمالي تكلفة تمويل منزلك أو شقتك</p>
+      </div>
+
+      <div class="glass-card fade-up">
+        <div class="form-grid cols-2">
+          <div class="form-group"><label for="propPrice">سعر العقار (ريال)</label><input type="number" id="propPrice" placeholder="مثال: 800000" /></div>
+          <div class="form-group"><label for="propDown">الدفعة الأولى (ريال)</label><input type="number" id="propDown" placeholder="مثال: 80000" /></div>
+          <div class="form-group"><label for="propRate">نسبة الربح السنوية %</label><input type="number" id="propRate" value="4.5" step="0.1" /></div>
+          <div class="form-group"><label for="propYears">مدة التمويل (سنة)</label>
+            <select id="propYears"><option value="10">10 سنوات</option><option value="15">15 سنة</option><option value="20" selected>20 سنة</option><option value="25">25 سنة</option><option value="30">30 سنة</option></select>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="calcMort()">احسب التمويل 🏠</button>
+      </div>
+
+      <div class="glass-card result-card fade-up"><div class="result-area" id="mortRes"><span class="result-label">أدخل بيانات العقار واضغط احسب</span></div></div>
+
+      <div class="ad-slot fade-up">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8447712286531277"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+      <div class="seo-content fade-up">
+        <h2>كيف تحسب التمويل العقاري في السعودية؟</h2>
+        <p>التمويل العقاري هو قرض طويل الأجل لشراء عقار سكني. في السعودية، تقدم البنوك تمويلاً يصل إلى 90% من قيمة العقار مع مدة تصل إلى 30 سنة.</p>
+        <h3>نصائح مهمة:</h3>
+        <ul>
+          <li>الدفعة الأولى لا تقل عادة عن 10% للمسكن الأول و 30% للثاني</li>
+          <li>القسط لا يجب أن يتجاوز 65% من صافي الراتب</li>
+          <li>قارن بين عروض البنوك المختلفة - الفرق البسيط في النسبة يوفر آلاف الريالات</li>
+          <li>برنامج "سكني" قد يوفر دعماً إضافياً للمستحقين</li>
+        </ul>
+      </div>
+
+      <div class="related-tools fade-up"><h3>أدوات ذات صلة</h3><div class="related-grid">
+        <a href="loan.html" class="related-card"><div class="r-icon" style="background:rgba(59,130,246,0.15);color:#3b82f6;">🏦</div>حاسبة القرض</a>
+        <a href="salary-car.html" class="related-card"><div class="r-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b;">🚗</div>راتب السيارة</a>
+        <a href="savings.html" class="related-card"><div class="r-icon" style="background:rgba(16,185,129,0.15);color:#10b981;">🐷</div>حاسبة الادخار</a>
+      </div></div>
+    </section>
+    <footer class="footer container"><p>© 2026 أدواتك اليومية</p></footer>
+  </div>
+  <script>
+    function fmt(n){return new Intl.NumberFormat('ar-SA',{maximumFractionDigits:2}).format(n);}
+    function calcMort(){
+      const price=parseFloat(document.getElementById('propPrice').value);
+      const down=parseFloat(document.getElementById('propDown').value)||0;
+      const rate=parseFloat(document.getElementById('propRate').value);
+      const years=parseInt(document.getElementById('propYears').value);
+      const el=document.getElementById('mortRes');
+      if(!price||price<=0){el.innerHTML='<span class="result-label">أدخل سعر العقار</span>';return;}
+      const loan=price-down;
+      if(loan<=0){el.innerHTML='<span class="result-label">الدفعة أكبر من سعر العقار!</span>';return;}
+      const months=years*12, mr=rate/100/12;
+      let monthly=mr===0?loan/months:loan*(mr*Math.pow(1+mr,months))/(Math.pow(1+mr,months)-1);
+      const total=monthly*months+down, interest=total-price, downPct=((down/price)*100).toFixed(1);
+      el.classList.add('has-result');
+      el.innerHTML=`<div>
+        <span class="result-label">القسط الشهري</span><span class="result-value">${fmt(monthly)} ريال</span><br>
+        <span class="result-label">مبلغ التمويل</span><span class="result-sub">${fmt(loan)} ريال</span><br>
+        <span class="result-label">الدفعة الأولى (${downPct}%)</span><span class="result-sub">${fmt(down)} ريال</span><br>
+        <span class="result-label">إجمالي المدفوع خلال ${years} سنة</span><span class="result-sub">${fmt(total)} ريال</span><br>
+        <span class="result-label">إجمالي الأرباح/الفوائد</span><span class="result-sub text-orange">${fmt(interest)} ريال</span>
+      </div>`;
+    }
+  </script>
+</body>
+</html>

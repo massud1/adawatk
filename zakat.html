@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="حاسبة الزكاة - احسب زكاة المال والذهب والفضة بسهولة. تعرف على نصاب الزكاة ومقدارها الشرعي." />
+  <meta name="keywords" content="حاسبة زكاة, حساب الزكاة, زكاة المال, نصاب الزكاة, زكاة الذهب, زكاة الفضة" />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>حاسبة الزكاة - زكاة المال والذهب | أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/zakat.html" />
+  <meta property="og:title" content="Zakat Calculator" />
+  <meta property="og:description" content="Calculate Zakat for money and gold according to Islamic law." />
+  <meta property="og:site_name" content="adawatk" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Zakat Calculator" />
+  <meta name="twitter:description" content="Calculate Zakat for money and gold according to Islamic law." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adawatk.pages.dev/zakat.html" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Zakat Calculator",
+    "description": "Islamic Zakat calculator for money and gold",
+    "url": "https://adawatk.pages.dev/zakat.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <div class="nav-logo">أ</div>
+          <span class="nav-title">أدواتك اليومية</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="vat.html">الضريبة</a></li>
+          <li><a href="hijri.html">التاريخ</a></li>
+          <li><a href="loan.html">القرض</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="tool-page container">
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background: rgba(6,182,212,0.15); color: #22d3ee;">🕌</div>
+        <h1>حاسبة الزكاة</h1>
+        <p>احسب زكاة المال والذهب والفضة وفقاً للشريعة الإسلامية</p>
+      </div>
+
+      <!-- Zakat on Money -->
+      <div class="glass-card fade-up">
+        <h3 style="margin-bottom: 16px; color: var(--cyan);">💰 زكاة المال</h3>
+        <div class="form-grid cols-2">
+          <div class="form-group">
+            <label for="totalSavings">إجمالي المدخرات (ريال)</label>
+            <input type="number" id="totalSavings" placeholder="المبلغ الذي مر عليه سنة هجرية" />
+          </div>
+          <div class="form-group">
+            <label for="debts">الديون المستحقة عليك (ريال)</label>
+            <input type="number" id="debts" placeholder="اختياري - 0 إذا لا يوجد" value="0" />
+          </div>
+        </div>
+        <button class="btn btn-primary" style="background: linear-gradient(135deg, #06b6d4, #22d3ee);" onclick="calcMoneyZakat()">
+          احسب زكاة المال 🕌
+        </button>
+        <div style="margin-top: 16px;">
+          <div class="result-area" id="moneyZakatResult">
+            <span class="result-label">أدخل مدخراتك واضغط احسب</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zakat on Gold -->
+      <div class="glass-card fade-up">
+        <h3 style="margin-bottom: 16px; color: #fbbf24;">🥇 زكاة الذهب</h3>
+        <div class="form-grid cols-2">
+          <div class="form-group">
+            <label for="goldWeight">وزن الذهب (جرام)</label>
+            <input type="number" id="goldWeight" placeholder="مثال: 100" step="0.1" />
+          </div>
+          <div class="form-group">
+            <label for="goldPrice">سعر الجرام الحالي (ريال)</label>
+            <input type="number" id="goldPrice" placeholder="مثال: 250" value="280" />
+          </div>
+        </div>
+        <button class="btn btn-primary" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);" onclick="calcGoldZakat()">
+          احسب زكاة الذهب 🥇
+        </button>
+        <div style="margin-top: 16px;">
+          <div class="result-area" id="goldZakatResult">
+            <span class="result-label">أدخل وزن الذهب واضغط احسب</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-slot fade-up">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8447712286531277"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+      <!-- Nisab Info -->
+      <div class="glass-card fade-up">
+        <h3 style="margin-bottom: 16px;">📌 معلومات عن النصاب</h3>
+        <div style="display: grid; gap: 12px;">
+          <div style="padding: 14px; background: rgba(6,182,212,0.06); border-radius: 12px; border: 1px solid rgba(6,182,212,0.12);">
+            <strong style="color: var(--cyan);">نصاب المال:</strong>
+            <span style="color: var(--text-secondary);">ما يعادل 85 جرام ذهب (تقريباً 23,800 ريال)*</span>
+          </div>
+          <div style="padding: 14px; background: rgba(245,158,11,0.06); border-radius: 12px; border: 1px solid rgba(245,158,11,0.12);">
+            <strong style="color: #fbbf24;">نصاب الذهب:</strong>
+            <span style="color: var(--text-secondary);">85 جرام من الذهب الخالص (عيار 24)</span>
+          </div>
+          <div style="padding: 14px; background: rgba(148,163,184,0.06); border-radius: 12px; border: 1px solid rgba(148,163,184,0.12);">
+            <strong style="color: var(--text-secondary);">نصاب الفضة:</strong>
+            <span style="color: var(--text-secondary);">595 جرام من الفضة الخالصة</span>
+          </div>
+        </div>
+        <p style="font-size: 12px; margin-top: 12px; color: var(--text-muted);">* النصاب يتغير بتغير سعر الذهب. المقدار الواجب في جميع الحالات هو 2.5% (ربع العشر).</p>
+      </div>
+
+      <div class="seo-content fade-up">
+        <h2>كيف تحسب الزكاة؟</h2>
+        <p>الزكاة ركن من أركان الإسلام، تجب على كل مسلم بالغ عاقل يملك مالاً بلغ النصاب ومرّ عليه حول هجري كامل (سنة).</p>
+        <h3>شروط وجوب الزكاة:</h3>
+        <ul>
+          <li><strong>بلوغ النصاب:</strong> أن يصل المال إلى ما يعادل 85 جرام ذهب</li>
+          <li><strong>مرور الحول:</strong> أن يمر على المال سنة هجرية كاملة</li>
+          <li><strong>الملكية التامة:</strong> أن يكون المال مملوكاً لك بالكامل</li>
+        </ul>
+        <h3>مقدار الزكاة:</h3>
+        <ul>
+          <li>زكاة المال: 2.5% من إجمالي المال (ربع العشر)</li>
+          <li>زكاة الذهب: 2.5% من قيمة الذهب الذي بلغ النصاب (85 جرام)</li>
+        </ul>
+        <p>⚠️ هذه الحاسبة للاسترشاد فقط. يُرجى استشارة عالم شرعي للحالات الخاصة.</p>
+      </div>
+
+      <div class="related-tools fade-up">
+        <h3>أدوات ذات صلة</h3>
+        <div class="related-grid">
+          <a href="hijri.html" class="related-card">
+            <div class="r-icon" style="background: rgba(99,102,241,0.15); color: #818cf8;">📅</div>
+            تحويل التاريخ
+          </a>
+          <a href="percentage.html" class="related-card">
+            <div class="r-icon" style="background: rgba(16,185,129,0.15); color: #10b981;">📊</div>
+            حاسبة النسبة
+          </a>
+          <a href="vat.html" class="related-card">
+            <div class="r-icon" style="background: rgba(16,185,129,0.15); color: #10b981;">🧾</div>
+            حاسبة الضريبة
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer container">
+      <ul class="footer-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="vat.html">الضريبة</a></li>
+        <li><a href="hijri.html">تحويل التاريخ</a></li>
+        <li><a href="bmi.html">BMI</a></li>
+      </ul>
+      <p>© 2026 أدواتك اليومية</p>
+    </footer>
+  </div>
+
+  <script>
+    function fmt(n) { return new Intl.NumberFormat('ar-SA', { maximumFractionDigits: 2 }).format(n); }
+
+    const GOLD_NISAB_GRAMS = 85;
+
+    function calcMoneyZakat() {
+      const savings = parseFloat(document.getElementById('totalSavings').value);
+      const debts = parseFloat(document.getElementById('debts').value) || 0;
+      const el = document.getElementById('moneyZakatResult');
+
+      if (!savings || savings <= 0) { el.innerHTML = '<span class="result-label">أدخل مبلغ المدخرات</span>'; return; }
+
+      const goldPrice = parseFloat(document.getElementById('goldPrice').value) || 280;
+      const nisab = GOLD_NISAB_GRAMS * goldPrice;
+      const zakatable = savings - debts;
+
+      if (zakatable < nisab) {
+        el.innerHTML = `
+          <div>
+            <span class="result-label">المبلغ بعد خصم الديون</span>
+            <span class="result-sub">${fmt(zakatable)} ريال</span><br>
+            <span class="result-label">النصاب المطلوب</span>
+            <span class="result-sub">${fmt(nisab)} ريال</span><br>
+            <span class="result-value" style="color: var(--orange); font-size: 18px;">المبلغ لم يبلغ النصاب - لا تجب الزكاة</span>
+          </div>`;
+        return;
+      }
+
+      const zakat = zakatable * 0.025;
+      el.classList.add('has-result');
+      el.innerHTML = `
+        <div>
+          <span class="result-label">المبلغ الخاضع للزكاة</span>
+          <span class="result-sub">${fmt(zakatable)} ريال</span><br>
+          <span class="result-label">مقدار الزكاة (2.5%)</span>
+          <span class="result-value">${fmt(zakat)} ريال</span><br>
+          <span class="result-sub" style="color: var(--green);">✅ بلغ النصاب (${fmt(nisab)} ريال)</span>
+        </div>`;
+    }
+
+    function calcGoldZakat() {
+      const weight = parseFloat(document.getElementById('goldWeight').value);
+      const price = parseFloat(document.getElementById('goldPrice').value);
+      const el = document.getElementById('goldZakatResult');
+
+      if (!weight || !price || weight <= 0) { el.innerHTML = '<span class="result-label">أدخل وزن الذهب وسعر الجرام</span>'; return; }
+
+      if (weight < GOLD_NISAB_GRAMS) {
+        el.innerHTML = `
+          <div>
+            <span class="result-label">وزن الذهب</span>
+            <span class="result-sub">${weight} جرام</span><br>
+            <span class="result-value" style="color: var(--orange); font-size: 18px;">لم يبلغ النصاب (${GOLD_NISAB_GRAMS} جرام) - لا تجب الزكاة</span>
+          </div>`;
+        return;
+      }
+
+      const totalValue = weight * price;
+      const zakat = totalValue * 0.025;
+      const zakatGrams = weight * 0.025;
+
+      el.classList.add('has-result');
+      el.innerHTML = `
+        <div>
+          <span class="result-label">قيمة الذهب الإجمالية</span>
+          <span class="result-sub">${fmt(totalValue)} ريال</span><br>
+          <span class="result-label">مقدار الزكاة (2.5%)</span>
+          <span class="result-value">${fmt(zakat)} ريال</span><br>
+          <span class="result-sub">أو ${zakatGrams.toFixed(2)} جرام ذهب</span><br>
+          <span class="result-sub" style="color: var(--green);">✅ بلغ النصاب</span>
+        </div>`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="تحويل التاريخ من هجري إلى ميلادي ومن ميلادي إلى هجري بدقة. محول تاريخ مجاني وسريع." />
+  <meta name="keywords" content="تحويل تاريخ هجري, هجري الى ميلادي, ميلادي الى هجري, تحويل التاريخ, محول التاريخ" />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>تحويل التاريخ هجري ↔ ميلادي - أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/hijri.html" />
+  <meta property="og:title" content="Hijri-Gregorian Date Converter" />
+  <meta property="og:description" content="Convert between Hijri and Gregorian calendar dates." />
+  <meta property="og:site_name" content="adawatk" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Hijri-Gregorian Date Converter" />
+  <meta name="twitter:description" content="Convert between Hijri and Gregorian calendar dates." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adawatk.pages.dev/hijri.html" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Date Converter",
+    "description": "Hijri to Gregorian date converter",
+    "url": "https://adawatk.pages.dev/hijri.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <div class="nav-logo">أ</div>
+          <span class="nav-title">أدواتك اليومية</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="vat.html">الضريبة</a></li>
+          <li><a href="hijri.html" class="active">التاريخ</a></li>
+          <li><a href="loan.html">القرض</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="tool-page container">
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background: rgba(99,102,241,0.15); color: #818cf8;">📅</div>
+        <h1>تحويل التاريخ هجري ↔ ميلادي</h1>
+        <p>حوّل أي تاريخ بين التقويم الهجري والميلادي بدقة تقريبية</p>
+      </div>
+
+      <!-- Gregorian to Hijri -->
+      <div class="glass-card fade-up">
+        <h3 style="margin-bottom: 16px; color: var(--accent-start);">🔄 من ميلادي → هجري</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="gregDate">التاريخ الميلادي</label>
+            <input type="date" id="gregDate" />
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="gregToHijri()">حوّل إلى هجري</button>
+        <div style="margin-top: 16px;">
+          <div class="result-area" id="hijriResult">
+            <span class="result-label">اختر تاريخ ميلادي للتحويل</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hijri to Gregorian -->
+      <div class="glass-card fade-up">
+        <h3 style="margin-bottom: 16px; color: var(--green);">🔄 من هجري → ميلادي</h3>
+        <div class="form-grid cols-3">
+          <div class="form-group">
+            <label for="hijriDay">اليوم</label>
+            <input type="number" id="hijriDay" placeholder="1-30" min="1" max="30" />
+          </div>
+          <div class="form-group">
+            <label for="hijriMonth">الشهر</label>
+            <select id="hijriMonth">
+              <option value="1">محرم (1)</option>
+              <option value="2">صفر (2)</option>
+              <option value="3">ربيع الأول (3)</option>
+              <option value="4">ربيع الثاني (4)</option>
+              <option value="5">جمادى الأولى (5)</option>
+              <option value="6">جمادى الآخرة (6)</option>
+              <option value="7">رجب (7)</option>
+              <option value="8">شعبان (8)</option>
+              <option value="9">رمضان (9)</option>
+              <option value="10">شوال (10)</option>
+              <option value="11">ذو القعدة (11)</option>
+              <option value="12">ذو الحجة (12)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="hijriYear">السنة الهجرية</label>
+            <input type="number" id="hijriYear" placeholder="مثال: 1446" />
+          </div>
+        </div>
+        <button class="btn btn-primary" style="background: linear-gradient(135deg, #10b981, #34d399);" onclick="hijriToGreg()">حوّل إلى ميلادي</button>
+        <div style="margin-top: 16px;">
+          <div class="result-area" id="gregResult">
+            <span class="result-label">أدخل تاريخ هجري للتحويل</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Today -->
+      <div class="glass-card fade-up" style="text-align: center;">
+        <h3 style="margin-bottom: 12px;">📌 تاريخ اليوم</h3>
+        <div id="todayDate" style="font-size: 16px; line-height: 2;"></div>
+      </div>
+
+      <div class="ad-slot fade-up">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8447712286531277"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+      <div class="seo-content fade-up">
+        <h2>تحويل التاريخ الهجري والميلادي</h2>
+        <p>يعتمد التقويم الهجري على الأشهر القمرية ويتكون من 354 أو 355 يومًا في السنة. يُستخدم التقويم الهجري بشكل رسمي في المملكة العربية السعودية وعدد من الدول الإسلامية.</p>
+        <h3>الأشهر الهجرية:</h3>
+        <ul>
+          <li>محرم، صفر، ربيع الأول، ربيع الثاني</li>
+          <li>جمادى الأولى، جمادى الآخرة، رجب، شعبان</li>
+          <li>رمضان، شوال، ذو القعدة، ذو الحجة</li>
+        </ul>
+        <p>ملاحظة: التحويل تقريبي وقد يختلف بيوم أو يومين عن التقويم الفلكي الدقيق.</p>
+      </div>
+
+      <div class="related-tools fade-up">
+        <h3>أدوات ذات صلة</h3>
+        <div class="related-grid">
+          <a href="age.html" class="related-card">
+            <div class="r-icon" style="background: rgba(99,102,241,0.15); color: #818cf8;">🎂</div>
+            حاسبة العمر
+          </a>
+          <a href="zakat.html" class="related-card">
+            <div class="r-icon" style="background: rgba(6,182,212,0.15); color: #06b6d4;">🕌</div>
+            حاسبة الزكاة
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer container">
+      <ul class="footer-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="vat.html">الضريبة</a></li>
+        <li><a href="car-loan.html">تمويل السيارة</a></li>
+        <li><a href="bmi.html">BMI</a></li>
+      </ul>
+      <p>© 2026 أدواتك اليومية</p>
+    </footer>
+  </div>
+
+  <script>
+    // Approximate Hijri conversion algorithms
+    function gregToHijri() {
+      const dateStr = document.getElementById('gregDate').value;
+      const el = document.getElementById('hijriResult');
+      if (!dateStr) { el.innerHTML = '<span class="result-label">اختر تاريخ ميلادي</span>'; return; }
+
+      const d = new Date(dateStr);
+      const hijri = gregorianToHijri(d.getFullYear(), d.getMonth() + 1, d.getDate());
+      const monthNames = ['', 'محرم', 'صفر', 'ربيع الأول', 'ربيع الثاني', 'جمادى الأولى', 'جمادى الآخرة', 'رجب', 'شعبان', 'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة'];
+
+      el.classList.add('has-result');
+      el.innerHTML = `
+        <div>
+          <span class="result-label">التاريخ الهجري</span>
+          <span class="result-value">${hijri.day} ${monthNames[hijri.month]} ${hijri.year} هـ</span>
+          <span class="result-sub">${hijri.day}/${hijri.month}/${hijri.year}</span>
+        </div>`;
+    }
+
+    function hijriToGreg() {
+      const day = parseInt(document.getElementById('hijriDay').value);
+      const month = parseInt(document.getElementById('hijriMonth').value);
+      const year = parseInt(document.getElementById('hijriYear').value);
+      const el = document.getElementById('gregResult');
+
+      if (!day || !month || !year) { el.innerHTML = '<span class="result-label">أدخل التاريخ الهجري كاملاً</span>'; return; }
+
+      const greg = hijriToGregorian(year, month, day);
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const formatted = new Date(greg.year, greg.month - 1, greg.day).toLocaleDateString('ar-SA', options);
+
+      el.classList.add('has-result');
+      el.innerHTML = `
+        <div>
+          <span class="result-label">التاريخ الميلادي</span>
+          <span class="result-value">${greg.day}/${greg.month}/${greg.year} م</span>
+          <span class="result-sub">${formatted}</span>
+        </div>`;
+    }
+
+    // Approximate conversion: Gregorian → Hijri
+    function gregorianToHijri(gy, gm, gd) {
+      const jd = gregorianToJD(gy, gm, gd);
+      return jdToHijri(jd);
+    }
+
+    // Approximate conversion: Hijri → Gregorian
+    function hijriToGregorian(hy, hm, hd) {
+      const jd = hijriToJD(hy, hm, hd);
+      return jdToGregorian(jd);
+    }
+
+    function gregorianToJD(y, m, d) {
+      if (m <= 2) { y--; m += 12; }
+      const A = Math.floor(y / 100);
+      const B = 2 - A + Math.floor(A / 4);
+      return Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1)) + d + B - 1524.5;
+    }
+
+    function jdToGregorian(jd) {
+      jd += 0.5;
+      const Z = Math.floor(jd);
+      const A = Math.floor((Z - 1867216.25) / 36524.25);
+      const AA = Z + 1 + A - Math.floor(A / 4);
+      const B = AA + 1524;
+      const C = Math.floor((B - 122.1) / 365.25);
+      const D = Math.floor(365.25 * C);
+      const E = Math.floor((B - D) / 30.6001);
+      const day = B - D - Math.floor(30.6001 * E);
+      const month = E < 14 ? E - 1 : E - 13;
+      const year = month > 2 ? C - 4716 : C - 4715;
+      return { year, month, day };
+    }
+
+    function hijriToJD(y, m, d) {
+      return Math.floor((11 * y + 3) / 30) + 354 * y + 30 * m - Math.floor((m - 1) / 2) + d + 1948440 - 385;
+    }
+
+    function jdToHijri(jd) {
+      jd = Math.floor(jd) + 0.5;
+      const y = Math.floor((30 * (jd - 1948440) + 10646) / 10631);
+      const m = Math.min(12, Math.ceil((jd - 29 - hijriToJD(y, 1, 1)) / 29.5) + 1);
+      const d = Math.floor(jd - hijriToJD(y, m, 1)) + 1;
+      return { year: y, month: m, day: d };
+    }
+
+    // Show today's date
+    (function showToday() {
+      const today = new Date();
+      const gregOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const gregStr = today.toLocaleDateString('ar-SA', gregOptions);
+      const hijri = gregorianToHijri(today.getFullYear(), today.getMonth() + 1, today.getDate());
+      const monthNames = ['', 'محرم', 'صفر', 'ربيع الأول', 'ربيع الثاني', 'جمادى الأولى', 'جمادى الآخرة', 'رجب', 'شعبان', 'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة'];
+      document.getElementById('todayDate').innerHTML = `
+        <span style="color: var(--text-secondary);">الميلادي:</span> <strong>${gregStr}</strong><br>
+        <span style="color: var(--text-secondary);">الهجري:</span> <strong>${hijri.day} ${monthNames[hijri.month]} ${hijri.year} هـ</strong>`;
+    })();
+  </script>
+</body>
+</html>

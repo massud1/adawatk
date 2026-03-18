@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="حاسبة ضريبة القيمة المضافة 15% - احسب الضريبة المضافة أو استخرجها من السعر الإجمالي بسهولة وسرعة." />
+  <meta name="keywords" content="حاسبة ضريبة, ضريبة القيمة المضافة, حساب VAT, ضريبة 15%, حاسبة الضريبة السعودية" />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>حاسبة ضريبة القيمة المضافة 15% - أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/vat.html" />
+  <meta property="og:title" content="VAT Calculator 15%" />
+  <meta property="og:description" content="Add or remove 15% VAT from any amount." />
+  <meta property="og:site_name" content="adawatk" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="VAT Calculator 15%" />
+  <meta name="twitter:description" content="Add or remove 15% VAT from any amount." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adawatk.pages.dev/vat.html" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "VAT Calculator",
+    "description": "Saudi Arabia 15% VAT calculator",
+    "url": "https://adawatk.pages.dev/vat.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <div class="nav-logo">أ</div>
+          <span class="nav-title">أدواتك اليومية</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="vat.html" class="active">الضريبة</a></li>
+          <li><a href="hijri.html">التاريخ</a></li>
+          <li><a href="loan.html">القرض</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="tool-page container">
+      <!-- Header -->
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background: rgba(16,185,129,0.15); color: #10b981;">🧾</div>
+        <h1>حاسبة ضريبة القيمة المضافة</h1>
+        <p>احسب ضريبة 15% بسهولة - أضف الضريبة للسعر أو استخرجها من السعر الشامل</p>
+      </div>
+
+      <!-- Calculator -->
+      <div class="glass-card fade-up">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="vatAmount">المبلغ (ريال)</label>
+            <input type="number" id="vatAmount" placeholder="أدخل المبلغ..." />
+          </div>
+          <div class="form-group">
+            <label for="vatRate">نسبة الضريبة %</label>
+            <input type="number" id="vatRate" value="15" placeholder="15" step="0.5" />
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <button class="btn btn-primary" onclick="addVat()">أضف الضريبة ➕</button>
+          <button class="btn btn-secondary" onclick="removeVat()">استخرج الضريبة ➖</button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="glass-card result-card fade-up">
+        <div class="result-area" id="vatResult">
+          <span class="result-label">أدخل المبلغ واضغط أحد الأزرار</span>
+        </div>
+      </div>
+
+      <!-- Ad Slot -->
+      <div class="ad-slot fade-up">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8447712286531277"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+      <!-- SEO Content -->
+      <div class="seo-content fade-up">
+        <h2>كيف تحسب ضريبة القيمة المضافة 15%؟</h2>
+        <p>ضريبة القيمة المضافة (VAT) هي ضريبة غير مباشرة تُفرض على السلع والخدمات في المملكة العربية السعودية بنسبة 15%. تم تطبيقها اعتبارًا من يوليو 2020.</p>
+        <h3>طريقة حساب الضريبة:</h3>
+        <ul>
+          <li><strong>إضافة الضريبة:</strong> المبلغ × 1.15 = السعر شامل الضريبة</li>
+          <li><strong>استخراج الضريبة:</strong> المبلغ الشامل ÷ 1.15 = السعر بدون ضريبة</li>
+          <li><strong>قيمة الضريبة فقط:</strong> المبلغ × 0.15 = مبلغ الضريبة</li>
+        </ul>
+        <p>استخدم حاسبتنا لحساب ضريبة القيمة المضافة بسهولة وسرعة لأي مبلغ.</p>
+      </div>
+
+      <!-- Related Tools -->
+      <div class="related-tools fade-up">
+        <h3>أدوات ذات صلة</h3>
+        <div class="related-grid">
+          <a href="loan.html" class="related-card">
+            <div class="r-icon" style="background: rgba(59,130,246,0.15); color: #3b82f6;">🏦</div>
+            حاسبة القرض
+          </a>
+          <a href="car-loan.html" class="related-card">
+            <div class="r-icon" style="background: rgba(245,158,11,0.15); color: #f59e0b;">🚗</div>
+            تمويل السيارة
+          </a>
+          <a href="percentage.html" class="related-card">
+            <div class="r-icon" style="background: rgba(16,185,129,0.15); color: #10b981;">📊</div>
+            حاسبة النسبة
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer container">
+      <ul class="footer-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="hijri.html">تحويل التاريخ</a></li>
+        <li><a href="car-loan.html">تمويل السيارة</a></li>
+        <li><a href="bmi.html">BMI</a></li>
+      </ul>
+      <p>© 2026 أدواتك اليومية</p>
+    </footer>
+  </div>
+
+  <script>
+    function fmt(n) { return new Intl.NumberFormat('ar-SA', { maximumFractionDigits: 2 }).format(n); }
+
+    function addVat() {
+      const amount = parseFloat(document.getElementById('vatAmount').value);
+      const rate = parseFloat(document.getElementById('vatRate').value) || 15;
+      const el = document.getElementById('vatResult');
+      if (isNaN(amount)) { el.innerHTML = '<span class="result-label">أدخل مبلغًا صحيحًا</span>'; return; }
+      const tax = amount * (rate / 100);
+      const total = amount + tax;
+      el.classList.add('has-result');
+      el.innerHTML = `
+        <div>
+          <span class="result-label">السعر بدون ضريبة</span>
+          <span class="result-sub">${fmt(amount)} ريال</span><br>
+          <span class="result-label">قيمة الضريبة (${rate}%)</span>
+          <span class="result-sub">${fmt(tax)} ريال</span><br>
+          <span class="result-label">السعر شامل الضريبة</span>
+          <span class="result-value">${fmt(total)} ريال</span>
+        </div>`;
+    }
+
+    function removeVat() {
+      const total = parseFloat(document.getElementById('vatAmount').value);
+      const rate = parseFloat(document.getElementById('vatRate').value) || 15;
+      const el = document.getElementById('vatResult');
+      if (isNaN(total)) { el.innerHTML = '<span class="result-label">أدخل مبلغًا صحيحًا</span>'; return; }
+      const amount = total / (1 + rate / 100);
+      const tax = total - amount;
+      el.classList.add('has-result');
+      el.innerHTML = `
+        <div>
+          <span class="result-label">السعر بدون ضريبة</span>
+          <span class="result-value">${fmt(amount)} ريال</span><br>
+          <span class="result-label">قيمة الضريبة (${rate}%)</span>
+          <span class="result-sub">${fmt(tax)} ريال</span><br>
+          <span class="result-label">السعر الشامل الأصلي</span>
+          <span class="result-sub">${fmt(total)} ريال</span>
+        </div>`;
+    }
+  </script>
+</body>
+</html>

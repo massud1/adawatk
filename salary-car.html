@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="كم تحتاج راتب لشراء سيارة؟ أدخل سعر السيارة واعرف الراتب المناسب والقسط الشهري المتوقع." />
+  <meta name="keywords" content="راتب شراء سيارة, كم راتب سيارة, قسط سيارة مناسب, تمويل سيارة راتب" />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>كم تحتاج راتب لشراء سيارة؟ | أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/salary-car.html" />
+  <meta property="og:title" content="How Much Salary to Buy a Car?" />
+  <meta property="og:description" content="Enter car price and find out the ideal salary and monthly installment." />
+  <meta property="og:site_name" content="adawatk" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="How Much Salary to Buy a Car?" />
+  <meta name="twitter:description" content="Enter car price and find out the ideal salary and monthly installment." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adawatk.pages.dev/salary-car.html" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Salary Calculator",
+    "description": "Calculate required salary for car financing",
+    "url": "https://adawatk.pages.dev/salary-car.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar"><div class="container"><a href="index.html" class="nav-brand"><div class="nav-logo">أ</div><span class="nav-title">أدواتك اليومية</span></a><ul class="nav-links"><li><a href="index.html">الرئيسية</a></li><li><a href="mortgage.html">العقاري</a></li><li><a href="loan.html">القرض</a></li><li><a href="salary.html">الراتب</a></li></ul></div></nav>
+
+    <section class="tool-page container">
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b;">🚗</div>
+        <h1>كم تحتاج راتب لشراء سيارة؟</h1>
+        <p>أدخل سعر السيارة وراح نحسب لك الراتب المطلوب والقسط المناسب</p>
+      </div>
+
+      <div class="glass-card fade-up">
+        <div class="form-grid cols-2">
+          <div class="form-group"><label for="carP">سعر السيارة (ريال)</label><input type="number" id="carP" placeholder="مثال: 120000" /></div>
+          <div class="form-group"><label for="carDown">الدفعة الأولى (ريال)</label><input type="number" id="carDown" placeholder="0 إذا بدون" value="0" /></div>
+          <div class="form-group"><label for="carR">نسبة الربح السنوية %</label><input type="number" id="carR" value="3.5" step="0.1" /></div>
+          <div class="form-group"><label for="carY">مدة التمويل</label>
+            <select id="carY"><option value="3">3 سنوات</option><option value="4">4 سنوات</option><option value="5" selected>5 سنوات</option><option value="7">7 سنوات</option></select>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="background:linear-gradient(135deg,#f59e0b,#fbbf24);" onclick="calcSalaryCar()">احسب الراتب المطلوب 🚗</button>
+      </div>
+
+      <div class="glass-card result-card fade-up"><div class="result-area" id="scRes"><span class="result-label">أدخل سعر السيارة واضغط احسب</span></div></div>
+
+      <div class="ad-slot fade-up">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8447712286531277"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+      <div class="seo-content fade-up">
+        <h2>كيف تعرف الراتب المناسب لشراء سيارة؟</h2>
+        <p>القاعدة المالية الذهبية تقول إن قسط السيارة يجب ألا يتجاوز 20-30% من راتبك الشهري. هذا يضمن أنك تقدر تغطي باقي مصاريفك.</p>
+        <h3>نصائح ذهبية:</h3>
+        <ul>
+          <li>القسط لا يتجاوز 25% من الراتب (القاعدة المثالية)</li>
+          <li>الدفعة الأولى الأكبر = قسط أقل وفوائد أقل</li>
+          <li>لا تنسى تكاليف التأمين والصيانة والبنزين (2000-3000 ريال/شهر تقريباً)</li>
+          <li>السيارة المستعملة بعمر 1-2 سنة توفر 20-30% من السعر</li>
+        </ul>
+      </div>
+
+      <div class="related-tools fade-up"><h3>أدوات ذات صلة</h3><div class="related-grid">
+        <a href="loan.html" class="related-card"><div class="r-icon" style="background:rgba(59,130,246,0.15);color:#3b82f6;">🏦</div>حاسبة القرض</a>
+        <a href="salary.html" class="related-card"><div class="r-icon" style="background:rgba(16,185,129,0.15);color:#10b981;">💼</div>الراتب الصافي</a>
+        <a href="fuel.html" class="related-card"><div class="r-icon" style="background:rgba(244,63,94,0.15);color:#fb7185;">⛽</div>حاسبة البنزين</a>
+      </div></div>
+    </section>
+    <footer class="footer container"><p>© 2026 أدواتك اليومية</p></footer>
+  </div>
+  <script>
+    function fmt(n){return new Intl.NumberFormat('ar-SA',{maximumFractionDigits:0}).format(n);}
+    function calcSalaryCar(){
+      const price=parseFloat(document.getElementById('carP').value);
+      const down=parseFloat(document.getElementById('carDown').value)||0;
+      const rate=parseFloat(document.getElementById('carR').value);
+      const years=parseInt(document.getElementById('carY').value);
+      const el=document.getElementById('scRes');
+      if(!price||price<=0){el.innerHTML='<span class="result-label">أدخل سعر السيارة</span>';return;}
+      const loan=price-down; if(loan<=0){el.innerHTML='<span class="result-label">الدفعة أكبر من السعر!</span>';return;}
+      const months=years*12, mr=rate/100/12;
+      let monthly=mr===0?loan/months:loan*(mr*Math.pow(1+mr,months))/(Math.pow(1+mr,months)-1);
+      const sal20=Math.ceil(monthly/0.20), sal25=Math.ceil(monthly/0.25), sal30=Math.ceil(monthly/0.30);
+      const extras=2500;
+      el.classList.add('has-result');
+      el.innerHTML=`<div>
+        <span class="result-label">القسط الشهري المتوقع</span><span class="result-value">${fmt(monthly)} ريال/شهر</span><br>
+        <span class="result-label">🟢 الراتب المثالي (القسط 20%)</span><span class="result-sub" style="color:#10b981;font-weight:800;font-size:18px;">${fmt(sal20)} ريال</span><br>
+        <span class="result-label">🟡 الراتب المقبول (القسط 25%)</span><span class="result-sub" style="color:#f59e0b;font-weight:700;">${fmt(sal25)} ريال</span><br>
+        <span class="result-label">🔴 الحد الأدنى (القسط 30%)</span><span class="result-sub" style="color:#f43f5e;font-weight:700;">${fmt(sal30)} ريال</span><br>
+        <span class="result-label">💡 ميزانية مقترحة مع التأمين والبنزين</span><span class="result-sub">القسط ${fmt(monthly)} + مصاريف ${fmt(extras)} = <strong>${fmt(monthly+extras)} ريال/شهر</strong></span>
+      </div>`;
+    }
+  </script>
+</body>
+</html>

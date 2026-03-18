@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="تحليل المصاريف الشهرية - أدخل مصاريفك واحصل على تقرير مبسط يوضح أين يذهب راتبك." />
+  <meta name="keywords" content="تحليل مصاريف, مصاريف شهرية, أين يذهب الراتب, ميزانية شهرية, إدارة مصاريف" />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>تحليل المصاريف الشهرية - أين يذهب راتبك؟ | أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .bar-wrap{margin:6px 0}.bar-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}.bar-track{height:10px;border-radius:99px;background:rgba(255,255,255,0.06)}.bar-fill{height:100%;border-radius:99px;transition:width 0.6s ease}
+  </style>
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/expenses.html" />
+  <meta property="og:title" content="Monthly Expenses Analyzer" />
+  <meta property="og:description" content="Enter your expenses and get a simplified report showing where your salary goes." />
+  <meta property="og:site_name" content="adawatk" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Monthly Expenses Analyzer" />
+  <meta name="twitter:description" content="Enter your expenses and get a simplified report showing where your salary goes." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adawatk.pages.dev/expenses.html" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Expense Analyzer",
+    "description": "Monthly expense analysis tool",
+    "url": "https://adawatk.pages.dev/expenses.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar"><div class="container"><a href="index.html" class="nav-brand"><div class="nav-logo">أ</div><span class="nav-title">أدواتك اليومية</span></a><ul class="nav-links"><li><a href="index.html">الرئيسية</a></li><li><a href="mortgage.html">العقاري</a></li><li><a href="loan.html">القرض</a></li><li><a href="salary.html">الراتب</a></li></ul></div></nav>
+
+    <section class="tool-page container">
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background:rgba(244,63,94,0.15);color:#fb7185;">📋</div>
+        <h1>تحليل المصاريف الشهرية</h1>
+        <p>أدخل مصاريفك الشهرية واحصل على تقرير يوضح أين يذهب راتبك</p>
+      </div>
+
+      <div class="glass-card fade-up">
+        <div class="form-group" style="margin-bottom:16px"><label for="eSalary">الراتب الشهري</label><input type="number" id="eSalary" placeholder="مثال: 12000" /></div>
+        <h3 style="margin-bottom:12px;font-size:14px;color:var(--text-secondary);">المصاريف الشهرية:</h3>
+        <div class="form-grid cols-2">
+          <div class="form-group"><label>🏠 إيجار/سكن</label><input type="number" id="eRent" placeholder="0" value="0" /></div>
+          <div class="form-group"><label>🚗 سيارة (قسط+بنزين)</label><input type="number" id="eCar" placeholder="0" value="0" /></div>
+          <div class="form-group"><label>🛒 طعام وبقالة</label><input type="number" id="eFood" placeholder="0" value="0" /></div>
+          <div class="form-group"><label>📱 فواتير (كهرباء/ماء/نت)</label><input type="number" id="eBills" placeholder="0" value="0" /></div>
+          <div class="form-group"><label>🏦 أقساط/ديون</label><input type="number" id="eLoans" placeholder="0" value="0" /></div>
+          <div class="form-group"><label>🎮 ترفيه/خروج</label><input type="number" id="eFun" placeholder="0" value="0" /></div>
+          <div class="form-group"><label>👕 ملابس/شخصي</label><input type="number" id="ePersonal" placeholder="0" value="0" /></div>
+          <div class="form-group"><label>💊 صحة/أدوية</label><input type="number" id="eHealth" placeholder="0" value="0" /></div>
+        </div>
+        <button class="btn btn-primary" style="background:linear-gradient(135deg,#f43f5e,#fb7185);" onclick="analyze()">حلل مصاريفي 📋</button>
+      </div>
+
+      <div class="glass-card result-card fade-up" id="expCard" style="display:none">
+        <div id="expRes"></div>
+        <div id="expBars" style="margin-top:20px;"></div>
+      </div>
+
+      <div class="ad-slot fade-up">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8447712286531277"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+      <div class="seo-content fade-up">
+        <h2>كيف تدير مصاريفك بذكاء؟</h2>
+        <ul>
+          <li><strong>قاعدة 50/30/20:</strong> 50% احتياجات، 30% رغبات، 20% ادخار</li>
+          <li>الإيجار لا يتجاوز 30% من الراتب</li>
+          <li>الأقساط لا تتجاوز 33% من الراتب</li>
+          <li>سجل مصاريفك يومياً لمدة شهر لتعرف أين تذهب فلوسك</li>
+        </ul>
+      </div>
+
+      <div class="related-tools fade-up"><h3>أدوات ذات صلة</h3><div class="related-grid">
+        <a href="savings.html" class="related-card"><div class="r-icon" style="background:rgba(16,185,129,0.15);color:#10b981;">🐷</div>حاسبة الادخار</a>
+        <a href="salary.html" class="related-card"><div class="r-icon" style="background:rgba(59,130,246,0.15);color:#3b82f6;">💼</div>الراتب الصافي</a>
+      </div></div>
+    </section>
+    <footer class="footer container"><p>© 2026 أدواتك اليومية</p></footer>
+  </div>
+  <script>
+    function fmt(n){return new Intl.NumberFormat('ar-SA',{maximumFractionDigits:0}).format(n);}
+    function analyze(){
+      const sal=parseFloat(document.getElementById('eSalary').value);
+      if(!sal||sal<=0){alert('أدخل الراتب');return;}
+      const cats=[
+        {name:'🏠 سكن',id:'eRent',color:'#6366f1'},
+        {name:'🚗 سيارة',id:'eCar',color:'#f59e0b'},
+        {name:'🛒 طعام',id:'eFood',color:'#10b981'},
+        {name:'📱 فواتير',id:'eBills',color:'#06b6d4'},
+        {name:'🏦 أقساط',id:'eLoans',color:'#f43f5e'},
+        {name:'🎮 ترفيه',id:'eFun',color:'#8b5cf6'},
+        {name:'👕 شخصي',id:'ePersonal',color:'#ec4899'},
+        {name:'💊 صحة',id:'eHealth',color:'#14b8a6'}
+      ];
+      let total=0;
+      cats.forEach(c=>{c.val=parseFloat(document.getElementById(c.id).value)||0;total+=c.val;});
+      const remaining=sal-total;
+      const pct=((total/sal)*100).toFixed(1);
+      const card=document.getElementById('expCard');card.style.display='block';
+      const el=document.getElementById('expRes');
+      let status,statusColor;
+      if(remaining>=sal*0.2){status='ممتاز ✅ تدخر أكثر من 20%';statusColor='#10b981';}
+      else if(remaining>=sal*0.1){status='جيد 🟡 تدخر 10-20%';statusColor='#f59e0b';}
+      else if(remaining>0){status='حذر 🟠 الادخار أقل من 10%';statusColor='#f97316';}
+      else{status='خطر 🔴 مصاريفك تتجاوز raتبك!';statusColor='#f43f5e';}
+      el.innerHTML=`<div style="text-align:center">
+        <span class="result-label">إجمالي المصاريف</span><span class="result-sub">${fmt(total)} من ${fmt(sal)} ريال (${pct}%)</span><br>
+        <span class="result-label">المتبقي (ادخار)</span><span class="result-value" style="color:${statusColor}">${fmt(remaining)} ريال</span><br>
+        <span style="padding:6px 16px;border-radius:99px;background:${statusColor}20;color:${statusColor};font-weight:700;font-size:14px;">${status}</span>
+      </div>`;
+      const bars=document.getElementById('expBars');
+      let bHtml='';
+      cats.filter(c=>c.val>0).sort((a,b)=>b.val-a.val).forEach(c=>{
+        const p=((c.val/sal)*100).toFixed(1);
+        bHtml+=`<div class="bar-wrap"><div class="bar-label"><span>${c.name}</span><span>${fmt(c.val)} (${p}%)</span></div><div class="bar-track"><div class="bar-fill" style="width:${p}%;background:${c.color};"></div></div></div>`;
+      });
+      bars.innerHTML=bHtml;
+    }
+  </script>
+</body>
+</html>

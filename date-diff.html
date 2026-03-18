@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="حاسبة الفرق بين تاريخين - كم يوم باقي على الراتب أو مناسبة معينة. احسب المدة بالأيام والأسابيع." />
+  <meta name="keywords" content="الفرق بين تاريخين, كم باقي على, حاسبة أيام, عد تنازلي, كم يوم" />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>الفرق بين تاريخين - كم يوم باقي؟ | أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/date-diff.html" />
+  <meta property="og:title" content="Date Difference Calculator" />
+  <meta property="og:description" content="Calculate the difference between two dates or countdown to an event." />
+  <meta property="og:site_name" content="adawatk" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Date Difference Calculator" />
+  <meta name="twitter:description" content="Calculate the difference between two dates or countdown to an event." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adawatk.pages.dev/date-diff.html" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Date Difference Calculator",
+    "description": "Calculate days between dates",
+    "url": "https://adawatk.pages.dev/date-diff.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar"><div class="container"><a href="index.html" class="nav-brand"><div class="nav-logo">أ</div><span class="nav-title">أدواتك اليومية</span></a><ul class="nav-links"><li><a href="index.html">الرئيسية</a></li><li><a href="mortgage.html">العقاري</a></li><li><a href="loan.html">القرض</a></li><li><a href="salary.html">الراتب</a></li></ul></div></nav>
+
+    <section class="tool-page container">
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background:rgba(6,182,212,0.15);color:#22d3ee;">📆</div>
+        <h1>الفرق بين تاريخين</h1>
+        <p>احسب المدة بين تاريخين أو كم باقي على الراتب أو مناسبة</p>
+      </div>
+
+      <!-- Date Difference -->
+      <div class="glass-card fade-up">
+        <h3 style="margin-bottom:16px;color:var(--cyan);">📅 احسب الفرق بين تاريخين</h3>
+        <div class="form-grid cols-2">
+          <div class="form-group"><label for="date1">التاريخ الأول</label><input type="date" id="date1" /></div>
+          <div class="form-group"><label for="date2">التاريخ الثاني</label><input type="date" id="date2" /></div>
+        </div>
+        <button class="btn btn-primary" style="background:linear-gradient(135deg,#06b6d4,#22d3ee);" onclick="calcDiff()">احسب الفرق 📆</button>
+        <div style="margin-top:16px;"><div class="result-area" id="diffRes"><span class="result-label">اختر تاريخين واضغط احسب</span></div></div>
+      </div>
+
+      <!-- Quick Countdown -->
+      <div class="glass-card fade-up">
+        <h3 style="margin-bottom:16px;color:var(--accent-start);">⏰ كم باقي على...؟</h3>
+        <div class="form-grid">
+          <div class="form-group"><label for="targetDate">التاريخ المستهدف</label><input type="date" id="targetDate" /></div>
+          <div class="form-group"><label for="eventName">اسم المناسبة (اختياري)</label><input type="text" id="eventName" placeholder="مثال: الراتب، الإجازة، العيد" /></div>
+        </div>
+        <button class="btn btn-primary" onclick="countdown()">كم باقي؟ ⏰</button>
+        <div style="margin-top:16px;"><div class="result-area" id="countRes"><span class="result-label">اختر تاريخ واضغط كم باقي</span></div></div>
+      </div>
+
+      <div class="ad-slot fade-up">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8447712286531277"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+      <!-- Quick dates info -->
+      <div class="glass-card fade-up" style="text-align:center;">
+        <h3 style="margin-bottom:12px;">📌 كم باقي على نهاية الشهر؟</h3>
+        <div id="monthEnd" style="font-size:16px;line-height:2;"></div>
+      </div>
+
+      <div class="related-tools fade-up"><h3>أدوات ذات صلة</h3><div class="related-grid">
+        <a href="age.html" class="related-card"><div class="r-icon" style="background:rgba(99,102,241,0.15);color:#818cf8;">🎂</div>حاسبة العمر</a>
+        <a href="hijri.html" class="related-card"><div class="r-icon" style="background:rgba(99,102,241,0.15);color:#818cf8;">📅</div>تحويل التاريخ</a>
+      </div></div>
+    </section>
+    <footer class="footer container"><p>© 2026 أدواتك اليومية</p></footer>
+  </div>
+  <script>
+    function calcDiff(){
+      const d1=document.getElementById('date1').value;
+      const d2=document.getElementById('date2').value;
+      const el=document.getElementById('diffRes');
+      if(!d1||!d2){el.innerHTML='<span class="result-label">اختر تاريخين</span>';return;}
+      const a=new Date(d1),b=new Date(d2);
+      const diffMs=Math.abs(b-a);
+      const days=Math.floor(diffMs/(1000*60*60*24));
+      const weeks=Math.floor(days/7), remDays=days%7;
+      const months=(Math.abs(b.getFullYear()-a.getFullYear())*12)+Math.abs(b.getMonth()-a.getMonth());
+      const hours=days*24;
+      el.classList.add('has-result');
+      el.innerHTML=`<div>
+        <span class="result-label">الفرق بالأيام</span><span class="result-value">${days.toLocaleString('ar-SA')} يوم</span><br>
+        <span class="result-sub">${weeks} أسبوع و ${remDays} أيام</span><br>
+        <span class="result-sub">≈ ${months} شهر تقريباً</span><br>
+        <span class="result-sub">${hours.toLocaleString('ar-SA')} ساعة</span>
+      </div>`;
+    }
+    function countdown(){
+      const target=document.getElementById('targetDate').value;
+      const name=document.getElementById('eventName').value||'الموعد';
+      const el=document.getElementById('countRes');
+      if(!target){el.innerHTML='<span class="result-label">اختر تاريخ</span>';return;}
+      const today=new Date();today.setHours(0,0,0,0);
+      const t=new Date(target);
+      const diff=Math.ceil((t-today)/(1000*60*60*24));
+      el.classList.add('has-result');
+      if(diff>0){
+        el.innerHTML=`<div><span class="result-label">باقي على ${name}</span><span class="result-value">${diff} يوم</span><span class="result-sub">${Math.floor(diff/7)} أسبوع و ${diff%7} أيام</span></div>`;
+      }else if(diff===0){
+        el.innerHTML=`<div><span class="result-value" style="color:#10b981;">🎉 اليوم هو ${name}!</span></div>`;
+      }else{
+        el.innerHTML=`<div><span class="result-label">${name} مرّ من</span><span class="result-value">${Math.abs(diff)} يوم</span></div>`;
+      }
+    }
+    // Month end
+    (function(){
+      const today=new Date();
+      const lastDay=new Date(today.getFullYear(),today.getMonth()+1,0);
+      const remaining=lastDay.getDate()-today.getDate();
+      const nextSalary=remaining<=2?'🎉 الراتب قريب جداً!':remaining<=7?'⏰ باقي أيام قليلة':'📅 باقي '+remaining+' يوم';
+      document.getElementById('monthEnd').innerHTML=`<strong>باقي ${remaining} يوم</strong> على نهاية الشهر<br><span style="color:var(--text-secondary);">${nextSalary}</span>`;
+    })();
+  </script>
+</body>
+</html>

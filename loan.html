@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="حاسبة القرض المتقدمة - احسب القسط الشهري مع جدول سداد تفصيلي يوضح الأصل والفائدة لكل شهر." />
+  <meta name="keywords" content="حاسبة قرض, جدول سداد, قسط شهري, قرض شخصي, حاسبة تمويل" />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>حاسبة القرض المتقدمة مع جدول السداد | أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>.sched-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:16px}.sched-table th,.sched-table td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--border-card)}.sched-table th{color:var(--text-muted);font-size:12px;position:sticky;top:0;background:var(--bg-secondary)}.sched-wrap{max-height:400px;overflow-y:auto;border-radius:12px;border:1px solid var(--border-card)}</style>
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/loan.html" />
+  <meta property="og:title" content="Loan Calculator with Amortization Schedule" />
+  <meta property="og:description" content="Calculate monthly installment with detailed payment schedule showing principal vs interest." />
+  <meta property="og:site_name" content="adawatk" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Loan Calculator with Amortization Schedule" />
+  <meta name="twitter:description" content="Calculate monthly installment with detailed payment schedule showing principal vs interest." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adawatk.pages.dev/loan.html" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Advanced Loan Calculator",
+    "description": "Calculate loan payments with amortization schedule",
+    "url": "https://adawatk.pages.dev/loan.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar"><div class="container"><a href="index.html" class="nav-brand"><div class="nav-logo">أ</div><span class="nav-title">أدواتك اليومية</span></a><ul class="nav-links"><li><a href="index.html">الرئيسية</a></li><li><a href="mortgage.html">العقاري</a></li><li><a href="loan.html" class="active">القرض</a></li><li><a href="salary.html">الراتب</a></li></ul></div></nav>
+
+    <section class="tool-page container">
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background:rgba(59,130,246,0.15);color:#60a5fa;">🏦</div>
+        <h1>حاسبة القرض المتقدمة</h1>
+        <p>احسب القسط الشهري مع جدول سداد تفصيلي</p>
+      </div>
+
+      <div class="glass-card fade-up">
+        <div class="form-grid cols-3">
+          <div class="form-group"><label for="lAmt">مبلغ القرض (ريال)</label><input type="number" id="lAmt" placeholder="200000" /></div>
+          <div class="form-group"><label for="lRate">الفائدة السنوية %</label><input type="number" id="lRate" placeholder="6" step="0.01" /></div>
+          <div class="form-group"><label for="lMon">المدة (أشهر)</label><input type="number" id="lMon" placeholder="60" /></div>
+        </div>
+        <button class="btn btn-primary" onclick="calcLoan()">احسب مع جدول السداد 🏦</button>
+      </div>
+
+      <div class="glass-card result-card fade-up"><div class="result-area" id="lRes"><span class="result-label">أدخل بيانات القرض واضغط احسب</span></div></div>
+
+      <div class="ad-slot fade-up">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8447712286531277"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+      <div class="glass-card fade-up" id="schedCard" style="display:none">
+        <h3 style="margin-bottom:8px;">📋 جدول السداد التفصيلي</h3>
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">يوضح لكل شهر: الأصل، الفائدة، والرصيد المتبقي</p>
+        <div class="sched-wrap" id="schedWrap"></div>
+      </div>
+
+      <div class="seo-content fade-up">
+        <h2>كيف يعمل جدول السداد؟</h2>
+        <p>جدول السداد (Amortization Schedule) يوضح تقسيم كل قسط شهري بين الأصل (المبلغ المقترض) والفائدة. في البداية تكون الفائدة عالية والأصل قليل، ثم تنعكس تدريجياً.</p>
+        <ul>
+          <li>القسط الشهري ثابت طوال فترة القرض</li>
+          <li>نسبة الفائدة تقل كل شهر لأن الرصيد ينخفض</li>
+          <li>في الأشهر الأخيرة معظم القسط يذهب لسداد الأصل</li>
+        </ul>
+      </div>
+
+      <div class="related-tools fade-up"><h3>أدوات ذات صلة</h3><div class="related-grid">
+        <a href="mortgage.html" class="related-card"><div class="r-icon" style="background:rgba(99,102,241,0.15);color:#818cf8;">🏠</div>التمويل العقاري</a>
+        <a href="salary-car.html" class="related-card"><div class="r-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b;">🚗</div>راتب السيارة</a>
+      </div></div>
+    </section>
+    <footer class="footer container"><p>© 2026 أدواتك اليومية</p></footer>
+  </div>
+  <script>
+    function fmt(n){return new Intl.NumberFormat('ar-SA',{maximumFractionDigits:2}).format(n);}
+    function calcLoan(){
+      const P=parseFloat(document.getElementById('lAmt').value);
+      const r=parseFloat(document.getElementById('lRate').value);
+      const n=parseInt(document.getElementById('lMon').value);
+      const el=document.getElementById('lRes');
+      if(!P||!n||n<=0){el.innerHTML='<span class="result-label">أدخل بيانات صحيحة</span>';return;}
+      const mr=r/100/12;
+      let M=mr===0?P/n:P*(mr*Math.pow(1+mr,n))/(Math.pow(1+mr,n)-1);
+      const total=M*n, interest=total-P;
+      el.classList.add('has-result');
+      el.innerHTML=`<div><span class="result-label">القسط الشهري</span><span class="result-value">${fmt(M)} ريال</span><br><span class="result-label">إجمالي السداد</span><span class="result-sub">${fmt(total)} ريال</span><br><span class="result-label">إجمالي الفوائد</span><span class="result-sub text-orange">${fmt(interest)} ريال</span></div>`;
+      // Schedule
+      const sc=document.getElementById('schedCard');sc.style.display='block';
+      let bal=P,html='<table class="sched-table"><thead><tr><th>الشهر</th><th>القسط</th><th>الأصل</th><th>الفائدة</th><th>المتبقي</th></tr></thead><tbody>';
+      for(let i=1;i<=n;i++){
+        const intPart=bal*mr;
+        const prinPart=M-intPart;
+        bal-=prinPart;if(bal<0)bal=0;
+        if(i<=12||i>n-3||(i%12===0)){
+          html+=`<tr><td>${i}</td><td>${fmt(M)}</td><td>${fmt(prinPart)}</td><td>${fmt(intPart)}</td><td>${fmt(bal)}</td></tr>`;
+        }else if(i===13){
+          html+=`<tr><td colspan="5" style="text-align:center;color:var(--text-muted);">... الأشهر ${13} إلى ${n-3} ...</td></tr>`;
+        }
+      }
+      html+='</tbody></table>';
+      document.getElementById('schedWrap').innerHTML=html;
+    }
+  </script>
+</body>
+</html>

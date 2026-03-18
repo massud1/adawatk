@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="حاسبة الراتب الصافي - احسب صافي راتبك بعد خصم الالتزامات والأقساط الشهرية." />
+  <meta name="keywords" content="حاسبة راتب, راتب صافي, صافي الراتب, خصومات الراتب, حساب الراتب" />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>حاسبة الراتب الصافي - أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/salary.html" />
+  <meta property="og:title" content="Net Salary Calculator" />
+  <meta property="og:description" content="Calculate net salary after GOSI deductions and monthly obligations." />
+  <meta property="og:site_name" content="adawatk" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Net Salary Calculator" />
+  <meta name="twitter:description" content="Calculate net salary after GOSI deductions and monthly obligations." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adawatk.pages.dev/salary.html" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Net Salary Calculator",
+    "description": "Saudi net salary calculator with GOSI",
+    "url": "https://adawatk.pages.dev/salary.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar"><div class="container"><a href="index.html" class="nav-brand"><div class="nav-logo">أ</div><span class="nav-title">أدواتك اليومية</span></a><ul class="nav-links"><li><a href="index.html">الرئيسية</a></li><li><a href="mortgage.html">العقاري</a></li><li><a href="loan.html">القرض</a></li><li><a href="salary.html" class="active">الراتب</a></li></ul></div></nav>
+
+    <section class="tool-page container">
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background:rgba(59,130,246,0.15);color:#60a5fa;">💼</div>
+        <h1>حاسبة الراتب الصافي</h1>
+        <p>احسب صافي راتبك بعد خصم التأمينات والالتزامات</p>
+      </div>
+
+      <div class="glass-card fade-up">
+        <div class="form-grid cols-2">
+          <div class="form-group"><label for="grossSal">الراتب الإجمالي (ريال)</label><input type="number" id="grossSal" placeholder="مثال: 12000" /></div>
+          <div class="form-group"><label for="housing">بدل سكن (ريال)</label><input type="number" id="housing" placeholder="0" value="0" /></div>
+          <div class="form-group"><label for="transport">بدل نقل (ريال)</label><input type="number" id="transport" placeholder="0" value="0" /></div>
+          <div class="form-group"><label for="gosiPct">نسبة التأمينات %</label><input type="number" id="gosiPct" value="9.75" step="0.25" /></div>
+        </div>
+        <h3 style="margin:16px 0 12px;font-size:14px;color:var(--text-secondary);">الخصومات الشهرية:</h3>
+        <div class="form-grid cols-2">
+          <div class="form-group"><label>🏦 أقساط بنكية</label><input type="number" id="sLoans" placeholder="0" value="0" /></div>
+          <div class="form-group"><label>🏠 إيجار</label><input type="number" id="sRent" placeholder="0" value="0" /></div>
+          <div class="form-group"><label>🚗 قسط سيارة</label><input type="number" id="sCar" placeholder="0" value="0" /></div>
+          <div class="form-group"><label>📱 اشتراكات</label><input type="number" id="sSubs" placeholder="0" value="0" /></div>
+        </div>
+        <button class="btn btn-primary" onclick="calcSalary()">احسب الصافي 💼</button>
+      </div>
+
+      <div class="glass-card result-card fade-up"><div class="result-area" id="salRes"><span class="result-label">أدخل راتبك واضغط احسب</span></div></div>
+
+      <div class="ad-slot fade-up">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8447712286531277"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+      <div class="seo-content fade-up">
+        <h2>كيف تحسب صافي الراتب في السعودية؟</h2>
+        <p>الراتب الصافي = الراتب الإجمالي + البدلات - التأمينات الاجتماعية - الخصومات. نسبة التأمينات الاجتماعية (GOSI) للموظف السعودي هي 9.75% من الراتب الأساسي.</p>
+        <h3>مكونات الراتب:</h3>
+        <ul>
+          <li><strong>الراتب الأساسي:</strong> المبلغ الثابت في العقد</li>
+          <li><strong>بدل السكن:</strong> عادةً 25% من الراتب الأساسي</li>
+          <li><strong>بدل النقل:</strong> مبلغ ثابت أو نسبة من الراتب</li>
+          <li><strong>التأمينات (GOSI):</strong> 9.75% من الراتب الأساسي</li>
+        </ul>
+      </div>
+
+      <div class="related-tools fade-up"><h3>أدوات ذات صلة</h3><div class="related-grid">
+        <a href="expenses.html" class="related-card"><div class="r-icon" style="background:rgba(244,63,94,0.15);color:#fb7185;">📋</div>تحليل المصاريف</a>
+        <a href="savings.html" class="related-card"><div class="r-icon" style="background:rgba(16,185,129,0.15);color:#10b981;">🐷</div>الادخار</a>
+      </div></div>
+    </section>
+    <footer class="footer container"><p>© 2026 أدواتك اليومية</p></footer>
+  </div>
+  <script>
+    function fmt(n){return new Intl.NumberFormat('ar-SA',{maximumFractionDigits:0}).format(n);}
+    function calcSalary(){
+      const gross=parseFloat(document.getElementById('grossSal').value);
+      const housing=parseFloat(document.getElementById('housing').value)||0;
+      const transport=parseFloat(document.getElementById('transport').value)||0;
+      const gosiPct=parseFloat(document.getElementById('gosiPct').value)||9.75;
+      const loans=parseFloat(document.getElementById('sLoans').value)||0;
+      const rent=parseFloat(document.getElementById('sRent').value)||0;
+      const car=parseFloat(document.getElementById('sCar').value)||0;
+      const subs=parseFloat(document.getElementById('sSubs').value)||0;
+      const el=document.getElementById('salRes');
+      if(!gross||gross<=0){el.innerHTML='<span class="result-label">أدخل الراتب الإجمالي</span>';return;}
+      const gosi=gross*(gosiPct/100);
+      const totalGross=gross+housing+transport;
+      const totalDeductions=gosi+loans+rent+car+subs;
+      const net=totalGross-totalDeductions;
+      const deductPct=((totalDeductions/totalGross)*100).toFixed(1);
+      el.classList.add('has-result');
+      el.innerHTML=`<div>
+        <span class="result-label">إجمالي الراتب مع البدلات</span><span class="result-sub">${fmt(totalGross)} ريال</span><br>
+        <span class="result-label">التأمينات (${gosiPct}%)</span><span class="result-sub text-rose">-${fmt(gosi)} ريال</span><br>
+        ${loans?`<span class="result-label">أقساط</span><span class="result-sub text-rose">-${fmt(loans)} ريال</span><br>`:''}
+        ${rent?`<span class="result-label">إيجار</span><span class="result-sub text-rose">-${fmt(rent)} ريال</span><br>`:''}
+        ${car?`<span class="result-label">سيارة</span><span class="result-sub text-rose">-${fmt(car)} ريال</span><br>`:''}
+        ${subs?`<span class="result-label">اشتراكات</span><span class="result-sub text-rose">-${fmt(subs)} ريال</span><br>`:''}
+        <span class="result-label">نسبة الخصومات</span><span class="result-sub">${deductPct}% من الإجمالي</span><br>
+        <span class="result-label">صافي الراتب</span><span class="result-value" style="color:${net>0?'#10b981':'#f43f5e'}">${fmt(net)} ريال</span>
+      </div>`;
+    }
+  </script>
+</body>
+</html>

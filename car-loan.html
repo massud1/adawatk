@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="حاسبة تمويل السيارة - احسب القسط الشهري وإجمالي تمويل السيارة مع الفائدة. حاسبة سريعة ودقيقة." />
+  <meta name="keywords" content="حاسبة تمويل سيارة, قسط سيارة, تمويل سيارة السعودية, حاسبة قسط, تمويل بنك" />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>حاسبة تمويل السيارة - احسب القسط الشهري | أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/car-loan.html" />
+  <meta property="og:title" content="Car Loan Calculator" />
+  <meta property="og:description" content="Calculate car financing monthly installment with down payment." />
+  <meta property="og:site_name" content="adawatk" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Car Loan Calculator" />
+  <meta name="twitter:description" content="Calculate car financing monthly installment with down payment." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adawatk.pages.dev/car-loan.html" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Loan Calculator",
+    "description": "Car financing calculator",
+    "url": "https://adawatk.pages.dev/car-loan.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <div class="nav-logo">أ</div>
+          <span class="nav-title">أدواتك اليومية</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="vat.html">الضريبة</a></li>
+          <li><a href="hijri.html">التاريخ</a></li>
+          <li><a href="loan.html">القرض</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="tool-page container">
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background: rgba(245,158,11,0.15); color: #f59e0b;">🚗</div>
+        <h1>حاسبة تمويل السيارة</h1>
+        <p>احسب القسط الشهري وإجمالي تكلفة تمويل سيارتك الجديدة أو المستعملة</p>
+      </div>
+
+      <div class="glass-card fade-up">
+        <div class="form-grid cols-2">
+          <div class="form-group">
+            <label for="carPrice">سعر السيارة (ريال)</label>
+            <input type="number" id="carPrice" placeholder="مثال: 120000" />
+          </div>
+          <div class="form-group">
+            <label for="downPayment">الدفعة الأولى (ريال)</label>
+            <input type="number" id="downPayment" placeholder="مثال: 20000" value="0" />
+          </div>
+          <div class="form-group">
+            <label for="carRate">نسبة الربح السنوية %</label>
+            <input type="number" id="carRate" placeholder="مثال: 3.5" step="0.1" value="3.5" />
+          </div>
+          <div class="form-group">
+            <label for="carYears">مدة التمويل (سنوات)</label>
+            <select id="carYears">
+              <option value="1">سنة واحدة</option>
+              <option value="2">سنتين</option>
+              <option value="3">3 سنوات</option>
+              <option value="4">4 سنوات</option>
+              <option value="5" selected>5 سنوات</option>
+              <option value="7">7 سنوات</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);" onclick="calcCarLoan()">
+          احسب التمويل 🚗
+        </button>
+      </div>
+
+      <div class="glass-card result-card fade-up">
+        <div class="result-area" id="carResult">
+          <span class="result-label">أدخل بيانات السيارة واضغط احسب</span>
+        </div>
+      </div>
+
+      <div class="ad-slot fade-up">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8447712286531277"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+      <div class="seo-content fade-up">
+        <h2>كيف تحسب تمويل السيارة في السعودية؟</h2>
+        <p>عند شراء سيارة بالتقسيط في المملكة العربية السعودية، تقدم البنوك وشركات التمويل خيارات متنوعة. من المهم معرفة إجمالي التكلفة قبل اتخاذ القرار.</p>
+        <h3>نصائح قبل تمويل السيارة:</h3>
+        <ul>
+          <li>قارن بين عروض البنوك وشركات التمويل المختلفة</li>
+          <li>تأكد من أن القسط الشهري لا يتجاوز 30% من راتبك</li>
+          <li>ضع في اعتبارك تكاليف التأمين والصيانة الإضافية</li>
+          <li>الدفعة الأولى الأكبر تقلل من إجمالي الفوائد</li>
+          <li>المدة الأقصر تعني فوائد أقل لكن أقساط أعلى</li>
+        </ul>
+      </div>
+
+      <div class="related-tools fade-up">
+        <h3>أدوات ذات صلة</h3>
+        <div class="related-grid">
+          <a href="loan.html" class="related-card">
+            <div class="r-icon" style="background: rgba(59,130,246,0.15); color: #3b82f6;">🏦</div>
+            حاسبة القرض
+          </a>
+          <a href="vat.html" class="related-card">
+            <div class="r-icon" style="background: rgba(16,185,129,0.15); color: #10b981;">🧾</div>
+            حاسبة الضريبة
+          </a>
+          <a href="percentage.html" class="related-card">
+            <div class="r-icon" style="background: rgba(99,102,241,0.15); color: #818cf8;">📊</div>
+            حاسبة النسبة
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer container">
+      <ul class="footer-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="vat.html">الضريبة</a></li>
+        <li><a href="hijri.html">تحويل التاريخ</a></li>
+        <li><a href="bmi.html">BMI</a></li>
+      </ul>
+      <p>© 2026 أدواتك اليومية</p>
+    </footer>
+  </div>
+
+  <script>
+    function fmt(n) { return new Intl.NumberFormat('ar-SA', { maximumFractionDigits: 2 }).format(n); }
+
+    function calcCarLoan() {
+      const price = parseFloat(document.getElementById('carPrice').value);
+      const down = parseFloat(document.getElementById('downPayment').value) || 0;
+      const annualRate = parseFloat(document.getElementById('carRate').value);
+      const years = parseInt(document.getElementById('carYears').value);
+      const el = document.getElementById('carResult');
+
+      if (!price || price <= 0) { el.innerHTML = '<span class="result-label">أدخل سعر السيارة</span>'; return; }
+
+      const loanAmount = price - down;
+      if (loanAmount <= 0) { el.innerHTML = '<span class="result-label">الدفعة الأولى أكبر من سعر السيارة!</span>'; return; }
+
+      const months = years * 12;
+      const monthlyRate = annualRate / 100 / 12;
+      let monthly;
+
+      if (monthlyRate === 0) {
+        monthly = loanAmount / months;
+      } else {
+        monthly = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+      }
+
+      const totalPaid = monthly * months + down;
+      const totalInterest = totalPaid - price;
+
+      el.classList.add('has-result');
+      el.innerHTML = `
+        <div>
+          <span class="result-label">القسط الشهري</span>
+          <span class="result-value">${fmt(monthly)} ريال</span><br>
+          <span class="result-label">مبلغ التمويل</span>
+          <span class="result-sub">${fmt(loanAmount)} ريال</span><br>
+          <span class="result-label">إجمالي المدفوع</span>
+          <span class="result-sub">${fmt(totalPaid)} ريال</span><br>
+          <span class="result-label">إجمالي الأرباح/الفوائد</span>
+          <span class="result-sub text-orange">${fmt(totalInterest)} ريال</span>
+        </div>`;
+    }
+  </script>
+</body>
+</html>

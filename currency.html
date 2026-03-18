@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="تحويل العملات - حوّل بين الريال السعودي والدولار واليورو والدرهم." />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>تحويل العملات - أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/currency.html" />
+  <meta property="og:title" content="Currency Converter" />
+  <meta property="og:description" content="Convert between SAR, USD, EUR, AED and more currencies." />
+  <meta property="og:site_name" content="adawatk" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Currency Converter" />
+  <meta name="twitter:description" content="Convert between SAR, USD, EUR, AED and more currencies." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adawatk.pages.dev/currency.html" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Currency Converter",
+    "description": "Currency conversion tool",
+    "url": "https://adawatk.pages.dev/currency.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <div class="nav-logo">أ</div>
+          <span class="nav-title">أدواتك اليومية</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="vat.html">الضريبة</a></li>
+          <li><a href="hijri.html">التاريخ</a></li>
+          <li><a href="loan.html">القرض</a></li>
+        </ul>
+      </div>
+    </nav>
+    <section class="tool-page container">
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b;">💱</div>
+        <h1>تحويل العملات</h1>
+        <p>حوّل بين العملات الرئيسية بأسعار تقريبية</p>
+      </div>
+      <div class="glass-card fade-up">
+        <div class="form-grid cols-3">
+          <div class="form-group">
+            <label for="amt">المبلغ</label>
+            <input type="number" id="amt" placeholder="100" />
+          </div>
+          <div class="form-group">
+            <label for="from">من</label>
+            <select id="from">
+              <option value="SAR">ريال سعودي</option>
+              <option value="USD">دولار أمريكي</option>
+              <option value="EUR">يورو</option>
+              <option value="AED">درهم إماراتي</option>
+              <option value="EGP">جنيه مصري</option>
+              <option value="GBP">جنيه إسترليني</option>
+              <option value="KWD">دينار كويتي</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="to">إلى</label>
+            <select id="to">
+              <option value="USD">دولار أمريكي</option>
+              <option value="SAR">ريال سعودي</option>
+              <option value="EUR">يورو</option>
+              <option value="AED">درهم إماراتي</option>
+              <option value="EGP">جنيه مصري</option>
+              <option value="GBP">جنيه إسترليني</option>
+              <option value="KWD">دينار كويتي</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="background:linear-gradient(135deg,#f59e0b,#fbbf24);" onclick="conv()">حوّل 💱</button>
+      </div>
+      <div class="glass-card result-card fade-up">
+        <div class="result-area" id="cRes"><span class="result-label">أدخل المبلغ واختر العملات</span></div>
+      </div>
+      <div class="ad-slot fade-up">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8447712286531277"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+      <p style="text-align:center;font-size:12px;color:var(--text-muted);margin:8px 0;">⚠️ الأسعار تقريبية للتجربة. اربط API أسعار مباشرة عند النشر.</p>
+      <div class="related-tools fade-up">
+        <h3>أدوات ذات صلة</h3>
+        <div class="related-grid">
+          <a href="vat.html" class="related-card"><div class="r-icon" style="background:rgba(16,185,129,0.15);color:#10b981;">🧾</div>حاسبة الضريبة</a>
+          <a href="percentage.html" class="related-card"><div class="r-icon" style="background:rgba(16,185,129,0.15);color:#10b981;">📊</div>حاسبة النسبة</a>
+        </div>
+      </div>
+    </section>
+    <footer class="footer container"><p>© 2026 أدواتك اليومية</p></footer>
+  </div>
+  <script>
+    const rates={SAR:1,USD:3.75,EUR:4.1,AED:1.02,EGP:0.077,GBP:4.75,KWD:12.2};
+    function fmt(n){return new Intl.NumberFormat('ar-SA',{maximumFractionDigits:2}).format(n);}
+    function conv(){
+      const a=parseFloat(document.getElementById('amt').value);
+      const f=document.getElementById('from').value;
+      const t=document.getElementById('to').value;
+      const el=document.getElementById('cRes');
+      if(isNaN(a)){el.innerHTML='<span class="result-label">أدخل مبلغاً صالحاً</span>';return;}
+      const inSar=a*rates[f];
+      const result=inSar/rates[t];
+      el.classList.add('has-result');
+      el.innerHTML=`<div><span class="result-label">النتيجة</span><span class="result-value">${fmt(a)} ${f} = ${fmt(result)} ${t}</span></div>`;
+    }
+  </script>
+</body>
+</html>

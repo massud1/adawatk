@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="حاسبة البنزين - احسب تكلفة البنزين لأي رحلة بناءً على المسافة واستهلاك سيارتك." />
+  <meta name="keywords" content="حاسبة بنزين, تكلفة بنزين, استهلاك سيارة, حساب وقود, سعر البنزين" />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>حاسبة البنزين - احسب تكلفة الوقود | أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/fuel.html" />
+  <meta property="og:title" content="Fuel Cost Calculator" />
+  <meta property="og:description" content="Calculate fuel cost for any trip based on distance and car consumption." />
+  <meta property="og:site_name" content="adawatk" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Fuel Cost Calculator" />
+  <meta name="twitter:description" content="Calculate fuel cost for any trip based on distance and car consumption." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adawatk.pages.dev/fuel.html" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Fuel Calculator",
+    "description": "Calculate trip fuel costs",
+    "url": "https://adawatk.pages.dev/fuel.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar"><div class="container"><a href="index.html" class="nav-brand"><div class="nav-logo">أ</div><span class="nav-title">أدواتك اليومية</span></a><ul class="nav-links"><li><a href="index.html">الرئيسية</a></li><li><a href="mortgage.html">العقاري</a></li><li><a href="loan.html">القرض</a></li><li><a href="salary.html">الراتب</a></li></ul></div></nav>
+
+    <section class="tool-page container">
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background:rgba(244,63,94,0.15);color:#fb7185;">⛽</div>
+        <h1>حاسبة البنزين</h1>
+        <p>احسب تكلفة البنزين لأي رحلة أو مشوارك الشهري</p>
+      </div>
+
+      <div class="glass-card fade-up">
+        <div class="form-grid cols-2">
+          <div class="form-group"><label for="fDist">المسافة (كم)</label><input type="number" id="fDist" placeholder="مثال: 400" /></div>
+          <div class="form-group"><label for="fConsume">استهلاك السيارة (كم/لتر)</label><input type="number" id="fConsume" placeholder="مثال: 12" value="12" step="0.5" /></div>
+          <div class="form-group"><label for="fPrice">سعر لتر البنزين (ريال)</label>
+            <select id="fPrice"><option value="2.18">91 عادي (2.18 ريال)</option><option value="2.33" selected>95 ممتاز (2.33 ريال)</option></select>
+          </div>
+          <div class="form-group"><label for="fTrips">عدد الرحلات (ذهاب وعودة = 2)</label><input type="number" id="fTrips" value="1" min="1" /></div>
+        </div>
+        <button class="btn btn-primary" style="background:linear-gradient(135deg,#f43f5e,#fb7185);" onclick="calcFuel()">احسب التكلفة ⛽</button>
+      </div>
+
+      <div class="glass-card result-card fade-up"><div class="result-area" id="fuelRes"><span class="result-label">أدخل المسافة واضغط احسب</span></div></div>
+
+      <div class="ad-slot fade-up">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8447712286531277"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+      <!-- Daily commute calculator -->
+      <div class="glass-card fade-up">
+        <h3 style="margin-bottom:16px;color:#fb7185;">🚗 حاسبة تكلفة الدوام الشهرية</h3>
+        <div class="form-grid cols-2">
+          <div class="form-group"><label for="comDist">المسافة للدوام (ذهاب فقط - كم)</label><input type="number" id="comDist" placeholder="مثال: 20" /></div>
+          <div class="form-group"><label for="comDays">أيام العمل بالشهر</label><input type="number" id="comDays" value="22" /></div>
+        </div>
+        <button class="btn btn-secondary" onclick="calcCommute()">احسب تكلفة الدوام</button>
+        <div style="margin-top:16px;"><div class="result-area" id="comRes"><span class="result-label">كم تكلفك رحلة الدوام شهرياً؟</span></div></div>
+      </div>
+
+      <div class="seo-content fade-up">
+        <h2>أسعار البنزين في السعودية 2026</h2>
+        <ul>
+          <li><strong>بنزين 91:</strong> 2.18 ريال/لتر</li>
+          <li><strong>بنزين 95:</strong> 2.33 ريال/لتر</li>
+          <li>متوسط استهلاك السيارات: 10-14 كم/لتر</li>
+          <li>السيارات الاقتصادية: 15-20 كم/لتر</li>
+          <li>الدفع الرباعي: 7-10 كم/لتر</li>
+        </ul>
+        <p>⚠️ الأسعار قد تتغير. تحقق من أسعار أرامكو الحالية.</p>
+      </div>
+
+      <div class="related-tools fade-up"><h3>أدوات ذات صلة</h3><div class="related-grid">
+        <a href="salary-car.html" class="related-card"><div class="r-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b;">🚗</div>راتب السيارة</a>
+        <a href="electricity.html" class="related-card"><div class="r-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b;">⚡</div>حاسبة الكهرباء</a>
+      </div></div>
+    </section>
+    <footer class="footer container"><p>© 2026 أدواتك اليومية</p></footer>
+  </div>
+  <script>
+    function fmt(n){return new Intl.NumberFormat('ar-SA',{maximumFractionDigits:2}).format(n);}
+    function calcFuel(){
+      const dist=parseFloat(document.getElementById('fDist').value);
+      const consume=parseFloat(document.getElementById('fConsume').value);
+      const price=parseFloat(document.getElementById('fPrice').value);
+      const trips=parseInt(document.getElementById('fTrips').value)||1;
+      const el=document.getElementById('fuelRes');
+      if(!dist||!consume||consume<=0){el.innerHTML='<span class="result-label">أدخل المسافة والاستهلاك</span>';return;}
+      const totalDist=dist*trips;
+      const liters=totalDist/consume;
+      const cost=liters*price;
+      el.classList.add('has-result');
+      el.innerHTML=`<div>
+        <span class="result-label">المسافة الإجمالية</span><span class="result-sub">${fmt(totalDist)} كم</span><br>
+        <span class="result-label">البنزين المطلوب</span><span class="result-sub">${fmt(liters)} لتر</span><br>
+        <span class="result-label">التكلفة</span><span class="result-value">${fmt(cost)} ريال</span><br>
+        <span class="result-sub">تكلفة الكيلومتر: ${fmt(cost/totalDist)} ريال/كم</span>
+      </div>`;
+    }
+    function calcCommute(){
+      const dist=parseFloat(document.getElementById('comDist').value);
+      const days=parseInt(document.getElementById('comDays').value)||22;
+      const consume=parseFloat(document.getElementById('fConsume').value)||12;
+      const price=parseFloat(document.getElementById('fPrice').value)||2.33;
+      const el=document.getElementById('comRes');
+      if(!dist){el.innerHTML='<span class="result-label">أدخل مسافة الدوام</span>';return;}
+      const dailyDist=dist*2;
+      const monthlyDist=dailyDist*days;
+      const liters=monthlyDist/consume;
+      const cost=liters*price;
+      const yearly=cost*12;
+      el.classList.add('has-result');
+      el.innerHTML=`<div>
+        <span class="result-label">المسافة الشهرية (ذهاب وعودة)</span><span class="result-sub">${fmt(monthlyDist)} كم</span><br>
+        <span class="result-label">تكلفة البنزين الشهرية</span><span class="result-value">${fmt(cost)} ريال</span><br>
+        <span class="result-label">التكلفة السنوية</span><span class="result-sub text-orange">${fmt(yearly)} ريال</span>
+      </div>`;
+    }
+  </script>
+</body>
+</html>

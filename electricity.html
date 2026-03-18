@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="حاسبة الكهرباء - احسب تكلفة استهلاك الأجهزة الكهربائية شهرياً حسب شرائح الكهرباء السعودية." />
+  <meta name="keywords" content="حاسبة كهرباء, فاتورة كهرباء, استهلاك كهرباء, شرائح الكهرباء, حساب كهرباء" />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>حاسبة الكهرباء - احسب فاتورتك | أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/electricity.html" />
+  <meta property="og:title" content="Electricity Cost Calculator" />
+  <meta property="og:description" content="Calculate monthly electricity cost for your appliances with Saudi tariff rates." />
+  <meta property="og:site_name" content="adawatk" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Electricity Cost Calculator" />
+  <meta name="twitter:description" content="Calculate monthly electricity cost for your appliances with Saudi tariff rates." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adawatk.pages.dev/electricity.html" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Electricity Calculator",
+    "description": "Calculate electricity bill for appliances",
+    "url": "https://adawatk.pages.dev/electricity.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar"><div class="container"><a href="index.html" class="nav-brand"><div class="nav-logo">أ</div><span class="nav-title">أدواتك اليومية</span></a><ul class="nav-links"><li><a href="index.html">الرئيسية</a></li><li><a href="mortgage.html">العقاري</a></li><li><a href="loan.html">القرض</a></li><li><a href="salary.html">الراتب</a></li></ul></div></nav>
+
+    <section class="tool-page container">
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background:rgba(245,158,11,0.15);color:#fbbf24;">⚡</div>
+        <h1>حاسبة الكهرباء</h1>
+        <p>احسب تكلفة استهلاك أجهزتك الكهربائية شهرياً</p>
+      </div>
+
+      <!-- Device Calculator -->
+      <div class="glass-card fade-up">
+        <h3 style="margin-bottom:16px;color:#fbbf24;">🔌 احسب تكلفة جهاز</h3>
+        <div class="form-grid cols-3">
+          <div class="form-group"><label for="elDevice">نوع الجهاز</label>
+            <select id="elDevice" onchange="setWatts()">
+              <option value="0">اختر جهاز...</option>
+              <option value="2000">مكيف سبليت</option>
+              <option value="3500">مكيف شباك</option>
+              <option value="1500">سخان ماء</option>
+              <option value="500">ثلاجة</option>
+              <option value="2000">غسالة</option>
+              <option value="1200">مجفف</option>
+              <option value="150">تلفزيون</option>
+              <option value="300">كمبيوتر</option>
+              <option value="50">إضاءة LED</option>
+              <option value="custom">مخصص</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="elWatts">القدرة (واط)</label><input type="number" id="elWatts" placeholder="مثال: 2000" /></div>
+          <div class="form-group"><label for="elHours">ساعات التشغيل/يوم</label><input type="number" id="elHours" placeholder="مثال: 8" value="8" /></div>
+        </div>
+        <div class="form-grid cols-2">
+          <div class="form-group"><label for="elDays">عدد أيام الشهر</label><input type="number" id="elDays" value="30" /></div>
+          <div class="form-group"><label for="elTariff">سعر الكيلوواط (هللة)</label>
+            <select id="elTariff"><option value="18">الشريحة 1: حتى 6000 (18 هللة)</option><option value="30" selected>الشريحة 2: أكثر من 6000 (30 هللة)</option></select>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="background:linear-gradient(135deg,#f59e0b,#fbbf24);" onclick="calcElec()">احسب التكلفة ⚡</button>
+        <div style="margin-top:16px;"><div class="result-area" id="elecRes"><span class="result-label">اختر جهاز واضغط احسب</span></div></div>
+      </div>
+
+      <div class="ad-slot fade-up">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8447712286531277"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+      <!-- Tariff table -->
+      <div class="glass-card fade-up">
+        <h3 style="margin-bottom:12px;">📊 شرائح أسعار الكهرباء (السكني)</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;">
+          <thead><tr style="border-bottom:1px solid var(--border-card);"><th style="padding:10px;text-align:right;color:var(--text-secondary);">الشريحة</th><th style="padding:10px;text-align:right;color:var(--text-secondary);">الاستهلاك (كيلوواط/شهر)</th><th style="padding:10px;text-align:right;color:var(--text-secondary);">السعر</th></tr></thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border-card);"><td style="padding:10px;"><span style="color:#10b981;">⬤</span> الأولى</td><td style="padding:10px;">1 - 6000</td><td style="padding:10px;">18 هللة/كيلوواط</td></tr>
+            <tr><td style="padding:10px;"><span style="color:#f59e0b;">⬤</span> الثانية</td><td style="padding:10px;">أكثر من 6000</td><td style="padding:10px;">30 هللة/كيلوواط</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">⚠️ الأسعار حسب تعريفة شركة الكهرباء السعودية للقطاع السكني.</p>
+      </div>
+
+      <div class="seo-content fade-up">
+        <h2>كيف تقلل فاتورة الكهرباء؟</h2>
+        <ul>
+          <li>اضبط المكيف على 24°C بدلاً من 18°C - يوفر حتى 40%</li>
+          <li>استخدم لمبات LED بدلاً من العادية - توفر 80% من استهلاك الإضاءة</li>
+          <li>أغلق الأجهزة من المصدر عند عدم الاستخدام</li>
+          <li>المكيف الإنفرتر يوفر 30-50% مقارنة بالعادي</li>
+          <li>العزل الحراري يقلل استهلاك التبريد بشكل كبير</li>
+        </ul>
+      </div>
+
+      <div class="related-tools fade-up"><h3>أدوات ذات صلة</h3><div class="related-grid">
+        <a href="fuel.html" class="related-card"><div class="r-icon" style="background:rgba(244,63,94,0.15);color:#fb7185;">⛽</div>حاسبة البنزين</a>
+        <a href="expenses.html" class="related-card"><div class="r-icon" style="background:rgba(244,63,94,0.15);color:#fb7185;">📋</div>تحليل المصاريف</a>
+      </div></div>
+    </section>
+    <footer class="footer container"><p>© 2026 أدواتك اليومية</p></footer>
+  </div>
+  <script>
+    function fmt(n){return new Intl.NumberFormat('ar-SA',{maximumFractionDigits:2}).format(n);}
+    function setWatts(){
+      const v=document.getElementById('elDevice').value;
+      if(v!=='0'&&v!=='custom')document.getElementById('elWatts').value=v;
+      else if(v==='custom')document.getElementById('elWatts').value='';
+    }
+    function calcElec(){
+      const watts=parseFloat(document.getElementById('elWatts').value);
+      const hours=parseFloat(document.getElementById('elHours').value);
+      const days=parseFloat(document.getElementById('elDays').value)||30;
+      const tariff=parseFloat(document.getElementById('elTariff').value);
+      const el=document.getElementById('elecRes');
+      if(!watts||!hours){el.innerHTML='<span class="result-label">أدخل القدرة وساعات التشغيل</span>';return;}
+      const kwhDay=(watts*hours)/1000;
+      const kwhMonth=kwhDay*days;
+      const costMonth=(kwhMonth*tariff)/100;
+      const costYear=costMonth*12;
+      el.classList.add('has-result');
+      el.innerHTML=`<div>
+        <span class="result-label">الاستهلاك اليومي</span><span class="result-sub">${fmt(kwhDay)} كيلوواط</span><br>
+        <span class="result-label">الاستهلاك الشهري</span><span class="result-sub">${fmt(kwhMonth)} كيلوواط</span><br>
+        <span class="result-label">التكلفة الشهرية</span><span class="result-value">${fmt(costMonth)} ريال</span><br>
+        <span class="result-label">التكلفة السنوية</span><span class="result-sub text-orange">${fmt(costYear)} ريال</span>
+      </div>`;
+    }
+  </script>
+</body>
+</html>

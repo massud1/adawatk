@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="حاسبة العمر - احسب عمرك بالسنوات والأشهر والأيام. حاسبة عمر دقيقة ومجانية." />
+  <meta name="keywords" content="حاسبة العمر, حساب العمر, كم عمري, حساب العمر بالهجري, حاسبة تاريخ الميلاد" />
+  <meta name="theme-color" content="#0a0e27" />
+  <title>حاسبة العمر - احسب عمرك بالسنوات والأشهر والأيام | أدواتك اليومية</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://adawatk.pages.dev/age.html" />
+  <meta property="og:title" content="Age Calculator - Detailed" />
+  <meta property="og:description" content="Calculate your age in years, months, days, weeks, and hours." />
+  <meta property="og:site_name" content="adawatk" />
+  <meta property="og:locale" content="ar_SA" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Age Calculator - Detailed" />
+  <meta name="twitter:description" content="Calculate your age in years, months, days, weeks, and hours." />
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://adawatk.pages.dev/age.html" />
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Age Calculator",
+    "description": "Detailed age calculator",
+    "url": "https://adawatk.pages.dev/age.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "SAR" },
+    "inLanguage": "ar"
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8447712286531277"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <div class="nav-logo">أ</div>
+          <span class="nav-title">أدواتك اليومية</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="vat.html">الضريبة</a></li>
+          <li><a href="hijri.html">التاريخ</a></li>
+          <li><a href="loan.html">القرض</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="tool-page container">
+      <div class="tool-header fade-up">
+        <div class="tool-icon" style="background: rgba(99,102,241,0.15); color: #818cf8;">🎂</div>
+        <h1>حاسبة العمر</h1>
+        <p>احسب عمرك بالسنوات والأشهر والأيام من تاريخ ميلادك</p>
+      </div>
+
+      <div class="glass-card fade-up">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="birthDate">تاريخ الميلاد</label>
+            <input type="date" id="birthDate" />
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="calculateAge()">احسب عمري 🎂</button>
+      </div>
+
+      <div class="glass-card result-card fade-up">
+        <div class="result-area" id="ageResult">
+          <span class="result-label">اختر تاريخ ميلادك واضغط احسب</span>
+        </div>
+      </div>
+
+      <div class="ad-slot fade-up">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8447712286531277"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+      <div class="seo-content fade-up">
+        <h2>كيف تحسب عمرك بالضبط؟</h2>
+        <p>حاسبة العمر تحسب عمرك الدقيق بالسنوات والأشهر والأيام بناءً على تاريخ ميلادك. كل ما عليك هو إدخال تاريخ ميلادك وستحصل على عمرك الحالي فوراً.</p>
+        <h3>معلومات إضافية:</h3>
+        <ul>
+          <li>العمر يُحسب من تاريخ الميلاد حتى التاريخ الحالي</li>
+          <li>يمكنك استخدام الحاسبة لمعرفة الفرق بين أي تاريخين</li>
+          <li>الحاسبة تأخذ في الاعتبار السنوات الكبيسة</li>
+        </ul>
+      </div>
+
+      <div class="related-tools fade-up">
+        <h3>أدوات ذات صلة</h3>
+        <div class="related-grid">
+          <a href="hijri.html" class="related-card">
+            <div class="r-icon" style="background: rgba(99,102,241,0.15); color: #818cf8;">📅</div>
+            تحويل التاريخ
+          </a>
+          <a href="bmi.html" class="related-card">
+            <div class="r-icon" style="background: rgba(244,63,94,0.15); color: #fb7185;">💪</div>
+            حاسبة BMI
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer container">
+      <ul class="footer-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="vat.html">الضريبة</a></li>
+        <li><a href="car-loan.html">تمويل السيارة</a></li>
+        <li><a href="zakat.html">الزكاة</a></li>
+      </ul>
+      <p>© 2026 أدواتك اليومية</p>
+    </footer>
+  </div>
+
+  <script>
+    function calculateAge() {
+      const birthDateValue = document.getElementById('birthDate').value;
+      const el = document.getElementById('ageResult');
+      if (!birthDateValue) { el.innerHTML = '<span class="result-label">اختر تاريخ الميلاد</span>'; return; }
+
+      const birthDate = new Date(birthDateValue);
+      const today = new Date();
+
+      let years = today.getFullYear() - birthDate.getFullYear();
+      let months = today.getMonth() - birthDate.getMonth();
+      let days = today.getDate() - birthDate.getDate();
+
+      if (days < 0) {
+        months -= 1;
+        const prev = new Date(today.getFullYear(), today.getMonth(), 0);
+        days += prev.getDate();
+      }
+      if (months < 0) { years -= 1; months += 12; }
+
+      const totalDays = Math.floor((today - birthDate) / (1000 * 60 * 60 * 24));
+      const totalWeeks = Math.floor(totalDays / 7);
+      const totalHours = totalDays * 24;
+
+      el.classList.add('has-result');
+      el.innerHTML = `
+        <div>
+          <span class="result-label">عمرك الحالي</span>
+          <span class="result-value">${years} سنة، ${months} شهر، ${days} يوم</span><br>
+          <span class="result-sub">أو ${totalDays.toLocaleString('ar-SA')} يوم</span><br>
+          <span class="result-sub">أو ${totalWeeks.toLocaleString('ar-SA')} أسبوع</span><br>
+          <span class="result-sub">أو ${totalHours.toLocaleString('ar-SA')} ساعة</span>
+        </div>`;
+    }
+  </script>
+</body>
+</html>
