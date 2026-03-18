@@ -644,3 +644,14 @@ a:hover { color: var(--accent-end); }
   .glass-card { padding: 16px; }
   .btn { padding: 12px 20px; }
 }
+
+/* --- Share Buttons --- */
+.share-bar { display:flex; gap:8px; flex-wrap:wrap; margin:20px 0; justify-content:center; }
+.share-btn { display:inline-flex; align-items:center; gap:6px; padding:10px 18px; border-radius:12px; font-size:13px; font-weight:700; text-decoration:none; color:#fff; transition:all 0.3s ease; border:none; cursor:pointer; font-family:inherit; }
+.share-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.3); }
+.share-btn.twitter { background:#1DA1F2; }
+.share-btn.whatsapp { background:#25D366; }
+.share-btn.telegram { background:#0088cc; }
+.share-btn.copy { background:var(--bg-card); border:1px solid var(--border-card); color:var(--text-primary); }
+.share-btn.copy:hover { border-color:var(--accent-start); }
+
